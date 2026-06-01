@@ -1,0 +1,4179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHRONO24 | Luxury Wrist Watches</title>
+  <link rel="icon" href="chrono24-app-logo.svg" type="image/svg+xml">
+
+  <style>
+    :root {
+      --ink: #151515;
+      --muted: #6c6a63;
+      --line: #ddd7cc;
+      --paper: #f8f6f1;
+      --panel: #ffffff;
+      --gold: #b88a37;
+      --green: #23473d;
+      --wine: #5e2636;
+      --steel: #dfe5e8;
+      --shadow: 0 18px 45px rgba(22, 22, 18, 0.13);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.5;
+      position: relative;
+    }
+
+    header,
+    main,
+    footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    .floating-watch-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .floating-watch {
+      position: absolute;
+      width: clamp(82px, 9vw, 138px);
+      aspect-ratio: 1;
+      opacity: 0.13;
+      filter: drop-shadow(0 18px 28px rgba(21, 21, 21, 0.16));
+      animation: luxuryFloat 18s ease-in-out infinite;
+    }
+
+    .floating-watch svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .floating-watch.gold {
+      color: var(--gold);
+    }
+
+    .floating-watch.green {
+      color: var(--green);
+    }
+
+    .floating-watch.ink {
+      color: var(--ink);
+    }
+
+    .floating-watch.one {
+      left: 5vw;
+      top: 18vh;
+      animation-delay: -2s;
+    }
+
+    .floating-watch.two {
+      right: 7vw;
+      top: 28vh;
+      width: clamp(95px, 11vw, 160px);
+      animation-delay: -8s;
+      transform: rotate(14deg);
+    }
+
+    .floating-watch.three {
+      left: 14vw;
+      bottom: 12vh;
+      width: clamp(70px, 8vw, 118px);
+      animation-delay: -13s;
+      transform: rotate(-11deg);
+    }
+
+    .floating-watch.four {
+      right: 18vw;
+      bottom: 18vh;
+      width: clamp(76px, 8vw, 126px);
+      animation-delay: -5s;
+      transform: rotate(8deg);
+    }
+
+    @keyframes luxuryFloat {
+      0% {
+        translate: 0 0;
+        rotate: 0deg;
+      }
+
+      50% {
+        translate: 0 -34px;
+        rotate: 5deg;
+      }
+
+      100% {
+        translate: 0 0;
+        rotate: 0deg;
+      }
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    select,
+    input {
+      font: inherit;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px clamp(20px, 5vw, 64px);
+      border-bottom: 1px solid rgba(21, 21, 21, 0.09);
+      background: rgba(248, 246, 241, 0.92);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(16px);
+    }
+
+    .feature-ticker {
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(184, 138, 55, 0.28);
+      background: var(--ink);
+      color: #fff;
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+    }
+
+    .ticker-track {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      width: max-content;
+      padding: 0 28px;
+      animation: tickerScroll 30s linear infinite;
+      white-space: nowrap;
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .ticker-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex: 0 0 auto;
+    }
+
+    .ticker-link {
+      color: #f1c46d;
+    }
+
+    @keyframes tickerScroll {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .promo-ad {
+      position: relative;
+      z-index: 1;
+      min-height: 58px;
+      margin: 0 clamp(6px, 1.5vw, 18px);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #274f82;
+      color: #fff;
+      display: grid;
+      grid-template-columns: minmax(110px, 190px) 1fr auto;
+      align-items: center;
+      gap: clamp(10px, 2vw, 22px);
+      padding: 0 clamp(12px, 3vw, 28px);
+      box-shadow: 0 12px 28px rgba(21, 39, 67, 0.18);
+    }
+
+    .promo-watch-frame {
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+    }
+
+    .promo-watch-frame img {
+      width: 122px;
+      height: 78px;
+      object-fit: contain;
+      transform: rotate(-7deg);
+      filter: drop-shadow(0 12px 16px rgba(0, 0, 0, 0.32));
+    }
+
+    .promo-message {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      min-width: 0;
+      text-align: center;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .promo-title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .promo-divider {
+      width: 2px;
+      height: 26px;
+      background: rgba(255, 255, 255, 0.16);
+      flex: 0 0 auto;
+    }
+
+    .promo-model {
+      color: #f4d087;
+      text-transform: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: min(38vw, 420px);
+    }
+
+    .promo-cta {
+      color: #fff;
+      font-weight: 900;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      white-space: nowrap;
+    }
+
+    .brand {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.35rem, 2.5vw, 2rem);
+      letter-spacing: 0;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(14px, 2.5vw, 30px);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav a:hover {
+      color: var(--ink);
+    }
+
+    .menu-toggle {
+      display: none;
+      min-width: 72px;
+      height: 42px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .bag {
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: #fff;
+      min-height: 40px;
+      padding: 0 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .wishlist-count {
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      color: var(--ink);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 30;
+      background: rgba(0, 0, 0, 0.42);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .drawer-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .wishlist-drawer,
+    .bag-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 31;
+      width: min(432px, 100vw);
+      height: 100vh;
+      background: #fff;
+      color: var(--ink);
+      transform: translateX(100%);
+      transition: transform 0.24s ease;
+      box-shadow: -18px 0 40px rgba(0, 0, 0, 0.22);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+    }
+
+    .wishlist-drawer.open,
+    .bag-drawer.open {
+      transform: translateX(0);
+    }
+
+    .drawer-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 28px 28px 18px;
+    }
+
+    .drawer-tabs {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      min-width: 0;
+      font-weight: 800;
+    }
+
+    .drawer-tabs span,
+    .drawer-tabs button {
+      color: #858585;
+      white-space: nowrap;
+    }
+
+    .drawer-tabs button {
+      border: 0;
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
+      font: inherit;
+      font-weight: inherit;
+    }
+
+    .drawer-tabs .active,
+    .drawer-tabs button:hover {
+      color: var(--ink);
+    }
+
+    .drawer-close {
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .wishlist-list {
+      overflow: auto;
+      padding: 0 28px 24px;
+    }
+
+    .bag-list {
+      overflow: auto;
+      padding: 0 28px 24px;
+    }
+
+    .wishlist-row {
+      display: grid;
+      grid-template-columns: 100px 1fr auto;
+      gap: 18px;
+      align-items: start;
+      padding: 26px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .wishlist-row img {
+      width: 100px;
+      height: 100px;
+      border-radius: 8px;
+      object-fit: contain;
+      background: #f4f4f4;
+    }
+
+    .wishlist-brand {
+      font-weight: 900;
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .wishlist-model {
+      color: #737373;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 6px;
+    }
+
+    .wishlist-badge {
+      display: inline-flex;
+      background: #eeeeec;
+      color: #111;
+      font-weight: 900;
+      padding: 2px 7px;
+      margin-bottom: 8px;
+    }
+
+    .wishlist-price {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+      font-weight: 900;
+      font-size: 1.05rem;
+    }
+
+    .wishlist-old {
+      color: #8a8a8a;
+      text-decoration: line-through;
+      font-weight: 500;
+      font-size: 0.92rem;
+    }
+
+    .wishlist-add {
+      margin-top: 12px;
+      border: 0;
+      background: transparent;
+      color: #858585;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .wishlist-remove {
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      font-size: 1.2rem;
+      line-height: 1;
+      padding: 2px;
+    }
+
+    .wishlist-empty {
+      border-top: 1px solid var(--line);
+      padding: 30px 0;
+      color: var(--muted);
+    }
+
+    .bag-row {
+      display: grid;
+      grid-template-columns: 88px 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding: 22px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .bag-row img {
+      width: 88px;
+      height: 88px;
+      border-radius: 8px;
+      object-fit: contain;
+      background: #f4f4f4;
+    }
+
+    .bag-model {
+      color: #6d6d6d;
+      font-size: 0.94rem;
+    }
+
+    .bag-price {
+      margin-top: 6px;
+      font-weight: 900;
+    }
+
+    .bag-remove {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 6px;
+      min-height: 34px;
+      padding: 0 10px;
+      cursor: pointer;
+    }
+
+    .bag-empty {
+      border-top: 1px solid var(--line);
+      padding: 30px 0;
+      color: var(--muted);
+    }
+
+    .bag-total {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-weight: 900;
+      padding: 0 0 14px;
+    }
+
+    .drawer-actions {
+      display: grid;
+      gap: 10px;
+      padding: 24px 28px 28px;
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .drawer-actions button,
+    .drawer-actions a {
+      min-height: 56px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .save-wishlist {
+      border: 1px solid #000;
+      background: #000;
+      color: #fff;
+    }
+
+    .view-wishlist {
+      border: 1px solid #000;
+      background: #fff;
+      color: #000;
+    }
+
+    .checkout-bag {
+      border: 1px solid #000;
+      background: #000;
+      color: #fff;
+    }
+
+    .product-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      background: rgba(0, 0, 0, 0.54);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .product-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .product-modal {
+      position: fixed;
+      inset: clamp(14px, 3vw, 34px);
+      z-index: 41;
+      display: none;
+      overflow: auto;
+      background: #fff;
+      color: #111;
+      border-radius: 8px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+    }
+
+    .product-modal.open {
+      display: block;
+    }
+
+    .product-detail {
+      min-height: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
+      gap: clamp(18px, 3vw, 38px);
+      padding: clamp(18px, 3vw, 34px);
+    }
+
+    .product-gallery {
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+
+    .product-hero-image {
+      min-height: min(58vh, 620px);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #f5f5f2;
+      border: 1px solid #ededed;
+    }
+
+    .product-hero-image img {
+      object-fit: contain;
+      padding: clamp(8px, 2vw, 18px);
+      background: #f7f7f5;
+    }
+
+    .product-thumbs {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .product-thumb {
+      height: 116px;
+      border: 1px solid #e8e8e4;
+      border-radius: 8px;
+      background: #f7f7f5;
+      overflow: hidden;
+    }
+
+    .product-thumb img {
+      object-fit: contain;
+      padding: 8px;
+    }
+
+    .product-info {
+      position: relative;
+      padding-top: 8px;
+    }
+
+    .product-close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 42px;
+      height: 42px;
+      border: 1px solid #d9d9d4;
+      border-radius: 50%;
+      background: #fff;
+      cursor: pointer;
+      font-size: 1.55rem;
+      line-height: 1;
+    }
+
+    .product-brand {
+      margin: 46px 0 4px;
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 1.12rem;
+      letter-spacing: 0;
+    }
+
+    .product-title {
+      margin-bottom: 4px;
+      color: #5d636b;
+      font-size: 1rem;
+    }
+
+    .product-sku {
+      margin-bottom: 8px;
+      color: #6d747c;
+      font-size: 0.92rem;
+    }
+
+    .product-review {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+      color: #000;
+    }
+
+    .product-stars {
+      letter-spacing: 0;
+      font-size: 1.1rem;
+    }
+
+    .product-review a {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .product-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .product-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: #e6f4dc;
+      color: #071c09;
+      font-weight: 900;
+      font-size: 0.78rem;
+    }
+
+    .product-badge.discount {
+      background: #f4f0df;
+    }
+
+    .product-badge.trade {
+      background: #f5ecd8;
+    }
+
+    .product-condition {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      color: #111;
+    }
+
+    .product-retail {
+      margin-bottom: 2px;
+      color: #6f6f6f;
+      font-weight: 700;
+    }
+
+    .product-retail s {
+      margin-left: 4px;
+      color: #6f6f6f;
+    }
+
+    .product-sale {
+      margin-left: 8px;
+      color: #1f50c8;
+      font-weight: 800;
+    }
+
+    .product-price {
+      margin-bottom: 2px;
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .product-finance {
+      margin-bottom: 22px;
+      color: #5d636b;
+      font-size: 0.95rem;
+    }
+
+    .product-finance strong {
+      color: #111;
+    }
+
+    .product-apr {
+      display: inline-flex;
+      align-items: center;
+      min-height: 22px;
+      padding: 1px 7px;
+      border-radius: 5px;
+      background: #ebe7ff;
+      color: #5960a8;
+      font-weight: 800;
+    }
+
+    .product-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .product-description {
+      margin: 0 0 18px;
+      color: #424750;
+      font-size: 0.98rem;
+      line-height: 1.65;
+    }
+
+    .product-actions button {
+      min-height: 54px;
+      border-radius: 8px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .detail-add {
+      border: 1px solid #111;
+      background: #111;
+      color: #fff;
+    }
+
+    .detail-wishlist {
+      border: 1px solid #111;
+      background: #fff;
+      color: #111;
+    }
+
+    .product-notes {
+      display: grid;
+      gap: 10px;
+      padding-top: 18px;
+      border-top: 1px solid #e5e2db;
+      color: #525252;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      min-height: calc(100vh - 74px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      align-items: end;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      padding: clamp(32px, 6vw, 72px);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg, rgba(10, 11, 10, 0.72), rgba(10, 11, 10, 0.35) 45%, rgba(10, 11, 10, 0.08)),
+        url("image_processing20250702-81-7uih2z.avif") center / cover;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 28vh;
+      z-index: -1;
+      background: linear-gradient(0deg, var(--paper), rgba(248, 246, 241, 0));
+    }
+
+    .hero-copy {
+      max-width: 760px;
+      color: #fff;
+      padding-bottom: 7vh;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.2rem, 8vw, 7rem);
+      line-height: 0.93;
+      margin-bottom: 22px;
+      letter-spacing: 0;
+      max-width: 11ch;
+    }
+
+    .hero-copy p:last-of-type {
+      max-width: 580px;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: clamp(1.02rem, 2vw, 1.22rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 20px;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #18120a;
+    }
+
+    .btn-secondary {
+      border-color: rgba(255, 255, 255, 0.58);
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .section {
+      padding: clamp(48px, 8vw, 96px) clamp(20px, 5vw, 64px);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 30px;
+    }
+
+    .section-head h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1;
+      margin-bottom: 0;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 0;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .category {
+      min-height: 360px;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow);
+      background: #111;
+      cursor: pointer;
+    }
+
+    .category img {
+      transition: transform 0.35s ease;
+    }
+
+    .category:hover img {
+      transform: scale(1.04);
+    }
+
+    .category-info {
+      position: absolute;
+      inset: auto 0 0;
+      color: #fff;
+      padding: 24px;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0));
+    }
+
+    .category-info h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.55rem;
+      margin-bottom: 4px;
+    }
+
+    .category-info p {
+      color: rgba(255, 255, 255, 0.78);
+      margin-bottom: 0;
+      font-size: 0.96rem;
+    }
+
+    .brand-categories {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .brand-chip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      font-weight: 700;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .brand-chip.all-models,
+    .brand-chip.active {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: #fff;
+    }
+
+    .shop-band {
+      background: #fff;
+      border-block: 1px solid var(--line);
+    }
+
+    .filter-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+
+    .filter-row select {
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 0 12px;
+      background: #fff;
+    }
+
+    .search-field {
+      min-width: min(320px, 100%);
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 0 12px;
+      background: #fff;
+    }
+
+    .watch-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .watch-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: 310px auto;
+      cursor: pointer;
+    }
+
+    .watch-media {
+      background: var(--steel);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+    }
+
+    .watch-media img {
+      object-fit: contain;
+      background: #f7f7f5;
+      border-radius: 6px;
+    }
+
+    .like-button {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.86);
+      color: var(--ink);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      line-height: 1;
+      box-shadow: 0 10px 24px rgba(21, 21, 21, 0.18);
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .like-button:hover {
+      transform: scale(1.06);
+    }
+
+    .like-button.liked {
+      background: var(--wine);
+      border-color: var(--wine);
+      color: #fff;
+    }
+
+    .watch-body {
+      padding: 20px;
+      display: grid;
+      gap: 13px;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .watch-body h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.35rem;
+      margin-bottom: 0;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .price {
+      font-weight: 800;
+      font-size: 1.05rem;
+    }
+
+    .price-original {
+      text-decoration: line-through;
+      color: var(--muted);
+      font-weight: 400;
+      margin-right: 8px;
+    }
+
+    .price-discounted {
+      color: var(--wine);
+      font-weight: 800;
+    }
+
+    .add {
+      min-height: 40px;
+      border-radius: 6px;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: #fff;
+      padding: 0 14px;
+      cursor: pointer;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--muted);
+    }
+
+    .payment-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 420px;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .checkout {
+      background: linear-gradient(180deg, #fff, #fbfaf7);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: clamp(22px, 4vw, 36px);
+      box-shadow: 0 18px 45px rgba(22, 22, 18, 0.09);
+    }
+
+    .checkout h3,
+    .summary h3 {
+      margin-bottom: 6px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.65rem;
+      line-height: 1.1;
+    }
+
+    .checkout-intro,
+    .summary-note {
+      color: var(--muted);
+      margin-bottom: 22px;
+      font-size: 0.95rem;
+    }
+
+    .checkout-steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .checkout-step {
+      min-height: 86px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .checkout-step span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      margin-bottom: 8px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: #fff;
+      font-weight: 900;
+      font-size: 0.78rem;
+    }
+
+    .checkout-step strong {
+      display: block;
+      font-size: 0.92rem;
+      line-height: 1.25;
+    }
+
+    .payment-options {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .payment-option {
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 14px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      cursor: pointer;
+      background: #fff;
+    }
+
+    .payment-option:has(input:checked) {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(184, 138, 55, 0.18);
+    }
+
+    .payment-option input {
+      width: 20px;
+      height: 20px;
+      margin: 0 auto;
+      accent-color: var(--gold);
+    }
+
+    .payment-option strong {
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .payment-option span {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .payment-details {
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      background: #111;
+      color: #fff;
+    }
+
+    .payment-details strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+
+    .payment-details p {
+      margin-bottom: 14px;
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    .payment-code {
+      display: block;
+      overflow-wrap: anywhere;
+      margin-top: 8px;
+      padding: 13px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #f4d087;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.9rem;
+    }
+
+    .payment-address-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: stretch;
+      margin-top: 8px;
+    }
+
+    .payment-address-row .payment-code {
+      margin-top: 0;
+    }
+
+    .copy-address {
+      min-height: 48px;
+      padding: 0 16px;
+      border: 1px solid rgba(244, 208, 135, 0.72);
+      border-radius: 6px;
+      background: #f4d087;
+      color: #18120a;
+      cursor: pointer;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .copy-address:hover,
+    .copy-address:focus {
+      background: #ffd978;
+      outline: none;
+    }
+
+    .payment-proof {
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 20px;
+    }
+
+    .payment-proof h4 {
+      margin: 0 0 6px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.35rem;
+      line-height: 1.1;
+    }
+
+    .payment-proof p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .proof-field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .proof-field.full {
+      grid-column: 1 / -1;
+    }
+
+    .proof-field label {
+      font-weight: 900;
+      font-size: 0.86rem;
+    }
+
+    .proof-field input,
+    .proof-field textarea {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfaf7;
+      color: var(--ink);
+      padding: 10px 12px;
+      outline: none;
+    }
+
+    .proof-field textarea {
+      min-height: 94px;
+      resize: vertical;
+    }
+
+    .proof-field input:focus,
+    .proof-field textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(184, 138, 55, 0.16);
+      background: #fff;
+    }
+
+    .proof-field input[aria-invalid="true"],
+    .proof-field textarea[aria-invalid="true"] {
+      border-color: #c63d55;
+      box-shadow: 0 0 0 3px rgba(198, 61, 85, 0.14);
+    }
+
+    .proof-upload {
+      padding: 12px;
+      border: 1px dashed rgba(184, 138, 55, 0.55);
+      background: #f8f6f1;
+    }
+
+    .proof-submit {
+      width: 100%;
+      min-height: 52px;
+      margin-top: 16px;
+      border: 0;
+      border-radius: 6px;
+      background: var(--ink);
+      color: #fff;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .proof-note {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .proof-page-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      margin-top: 18px;
+      padding: 0 18px;
+      border-radius: 6px;
+      border: 1px solid var(--ink);
+      background: #fff;
+      color: var(--ink);
+      font-weight: 900;
+    }
+
+    .proof-page-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .proof-page-copy {
+      padding: clamp(22px, 4vw, 34px);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #111;
+      color: #fff;
+      box-shadow: 0 18px 45px rgba(22, 22, 18, 0.12);
+    }
+
+    .proof-page-copy h3 {
+      margin-bottom: 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      line-height: 1.05;
+    }
+
+    .proof-page-copy p {
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    .proof-page-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .proof-page-list span {
+      display: block;
+      padding: 12px 14px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.07);
+      color: #f4d087;
+      font-weight: 800;
+    }
+
+    .proof-page-panel .payment-proof {
+      margin-top: 0;
+      min-height: 100%;
+      box-shadow: 0 18px 45px rgba(22, 22, 18, 0.09);
+    }
+
+    .checkout-assurance {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+      color: #4f514c;
+      font-size: 0.88rem;
+    }
+
+    .checkout-assurance span {
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      text-align: center;
+      font-weight: 800;
+    }
+
+    .summary {
+      position: sticky;
+      top: 96px;
+      background: #fff;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 28px;
+      min-height: 330px;
+      box-shadow: 0 18px 45px rgba(22, 22, 18, 0.09);
+    }
+
+    .summary dl {
+      display: grid;
+      gap: 0;
+      margin: 22px 0;
+      border-block: 1px solid var(--line);
+    }
+
+    .summary dl > div {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--line);
+      padding: 14px 0;
+    }
+
+    .summary dl > div:last-child {
+      border-bottom: 0;
+    }
+
+    .summary dt,
+    .summary dd {
+      margin: 0;
+    }
+
+    .summary dd {
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .cart-items {
+      display: grid;
+      gap: 10px;
+      margin: 16px 0 22px;
+    }
+
+    .cart-empty {
+      padding: 18px;
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+      color: var(--muted);
+      background: #fbfaf7;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 64px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cart-item img {
+      width: 64px;
+      height: 64px;
+      border-radius: 8px;
+      object-fit: contain;
+      background: #f4f4f4;
+    }
+
+    .cart-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .remove-item {
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      border-radius: 6px;
+      min-height: 34px;
+      padding: 0 10px;
+      cursor: pointer;
+    }
+
+    .summary button {
+      width: 100%;
+      min-height: 54px;
+      border-radius: 6px;
+      border: 0;
+      background: var(--gold);
+      color: #18120a;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    footer {
+      padding: 28px clamp(20px, 5vw, 64px);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 980px) {
+      .categories,
+      .brand-categories,
+      .watch-grid,
+      .payment-layout,
+      .proof-page-shell {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .payment-layout {
+        align-items: stretch;
+      }
+
+      .product-detail {
+        grid-template-columns: 1fr;
+      }
+
+      .summary {
+        position: static;
+      }
+    }
+
+    @media (max-width: 700px) {
+      body {
+        overflow-x: hidden;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 14px;
+        right: 14px;
+      }
+
+      .nav {
+        display: none;
+        width: 100%;
+        padding: 12px 0 2px;
+        border-top: 1px solid var(--line);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        overflow: visible;
+      }
+
+      .nav.open {
+        display: flex;
+      }
+
+      .nav a,
+      .nav button {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .promo-ad {
+        grid-template-columns: 68px minmax(0, 1fr);
+        min-height: 54px;
+        gap: 8px;
+        padding: 0 10px;
+      }
+
+      .promo-cta {
+        grid-column: 2;
+        justify-self: start;
+        font-size: 0.76rem;
+      }
+
+      .promo-watch-frame {
+        height: 54px;
+      }
+
+      .promo-watch-frame img {
+        width: 78px;
+        height: 58px;
+      }
+
+      .promo-message {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+        text-align: left;
+        font-size: 0.76rem;
+      }
+
+      .promo-divider {
+        display: none;
+      }
+
+      .promo-model {
+        max-width: 44vw;
+      }
+
+      .hero {
+        min-height: 86vh;
+        padding: 28px 20px;
+      }
+
+      .hero::before {
+        background-size: auto, contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: #10100e;
+      }
+
+      .section {
+        padding: 42px 14px;
+      }
+
+      .section-head {
+        align-items: start;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .categories,
+      .brand-categories,
+      .watch-grid,
+      .payment-layout,
+      .proof-page-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .watch-card {
+        grid-template-rows: minmax(230px, 58vw) auto;
+      }
+
+      .watch-media {
+        padding: 12px;
+      }
+
+      .category {
+        min-height: 250px;
+      }
+
+      .category img {
+        object-fit: contain;
+        background: #111;
+      }
+
+      .filter-row {
+        align-items: stretch;
+      }
+
+      .filter-row label,
+      .filter-row select {
+        width: 100%;
+      }
+
+      .product-modal {
+        inset: 0;
+        border-radius: 0;
+      }
+
+      .product-detail {
+        padding: 14px;
+        gap: 14px;
+      }
+
+      .product-hero-image {
+        min-height: 0;
+        height: min(76vw, 390px);
+      }
+
+      .product-hero-image img {
+        padding: 10px;
+      }
+
+      .product-thumbs {
+        gap: 8px;
+      }
+
+      .product-thumb {
+        height: 78px;
+      }
+
+      .product-brand {
+        margin-top: 50px;
+      }
+
+      .product-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .checkout-steps,
+      .checkout-assurance {
+        grid-template-columns: 1fr;
+      }
+
+      .cart-item {
+        grid-template-columns: 54px 1fr;
+      }
+
+      .cart-item img {
+        width: 54px;
+        height: 54px;
+      }
+
+      .remove-item {
+        grid-column: 2;
+        justify-self: start;
+      }
+
+      footer {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .brand {
+        font-size: 1.28rem;
+      }
+
+      .watch-card {
+        grid-template-rows: 245px auto;
+      }
+
+      .watch-body {
+        padding: 16px;
+      }
+
+      .price-row {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .add {
+        width: 100%;
+      }
+
+      .wishlist-row {
+        grid-template-columns: 78px 1fr auto;
+        gap: 12px;
+      }
+
+      .wishlist-row img {
+        width: 78px;
+        height: 78px;
+      }
+
+      .product-hero-image {
+        height: 330px;
+      }
+
+      .product-thumb {
+        height: 68px;
+      }
+
+      .checkout,
+      .summary {
+        padding: 18px;
+      }
+    }
+    .preloader {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at center, rgba(184, 138, 55, 0.12), transparent 34%),
+        var(--paper);
+      z-index: 90;
+      transition: opacity 220ms ease, visibility 220ms ease;
+    }
+
+    .preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .preloader .spinner {
+      width: min(220px, 72vw);
+      min-height: 150px;
+      border-radius: 8px;
+      display: grid;
+      gap: 14px;
+      place-items: center;
+      padding: 24px;
+      box-shadow: 0 18px 48px rgba(21, 21, 21, 0.14);
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(184, 138, 55, 0.22);
+      text-align: center;
+    }
+
+    .preloader .spinner svg {
+      width: 68px;
+      height: 68px;
+      display: block;
+      transform-origin: 50% 50%;
+      animation: rotate 0.85s linear infinite;
+    }
+
+    .preloader .spinner svg circle {
+      stroke-linecap: round;
+      stroke-dasharray: 140;
+      stroke-dashoffset: 42;
+      transform-origin: 50% 50%;
+      animation: dash 0.85s ease-in-out infinite;
+    }
+
+    .preloader-brand {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .preloader-note {
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    @keyframes rotate { to { transform: rotate(360deg); } }
+    @keyframes dash {
+      0% { stroke-dashoffset: 140; }
+      50% { stroke-dashoffset: 42; }
+      100% { stroke-dashoffset: 140; }
+    }
+
+    .discount-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 10, 8, 0.68);
+      z-index: 65;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    .discount-backdrop.open { display: flex; }
+
+    .discount-modal {
+      width: min(860px, 96vw);
+      background: #111;
+      border-radius: 8px;
+      box-shadow: 0 36px 100px rgba(0,0,0,0.42);
+      padding: 0;
+      font-family: Inter, system-ui, sans-serif;
+      overflow: hidden;
+      border: 1px solid rgba(184, 138, 55, 0.45);
+    }
+
+    .discount-modal .sale-banner {
+      position: relative;
+      min-height: 360px;
+      background:
+        linear-gradient(90deg, rgba(12, 12, 10, 0.92), rgba(12, 12, 10, 0.24) 42%, rgba(12, 12, 10, 0.06)),
+        url("sale-banner-template-design-big-sale-special-offer-promotion-discount-banner-2ACPMFJ.jpg") center / cover;
+      color: #fff;
+      display: grid;
+      grid-template-columns: minmax(220px, 0.85fr) minmax(0, 1fr);
+      align-items: end;
+      gap: 24px;
+      padding: clamp(22px, 4vw, 38px);
+    }
+
+    .discount-watch {
+      width: min(230px, 42vw);
+      aspect-ratio: 1;
+      justify-self: center;
+      align-self: center;
+      color: #f4d087;
+      filter: drop-shadow(0 24px 28px rgba(0, 0, 0, 0.46));
+      transform: rotate(-10deg);
+    }
+
+    .discount-watch svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .discount-copy {
+      max-width: 440px;
+      text-align: left;
+      text-shadow: 0 3px 18px rgba(0, 0, 0, 0.36);
+    }
+
+    .discount-modal .ribbon {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      margin-bottom: 10px;
+      border-radius: 999px;
+      background: #ffd200;
+      color: #111;
+      font-weight: 900;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+    }
+
+    .discount-modal .big-sale {
+      margin: 0 0 8px;
+      font-size: clamp(2.4rem, 6vw, 4.8rem);
+      line-height: 0.9;
+      font-weight: 900;
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    .discount-modal .sub {
+      color: rgba(255, 255, 255, 0.88);
+      font-weight: 800;
+    }
+
+    .discount-body {
+      padding: 20px clamp(18px, 4vw, 34px) 28px;
+      background: linear-gradient(180deg, #171715, #0f0f0e);
+      color: #fff;
+      text-align: center;
+    }
+
+    .discount-body p { margin: 0 0 14px; color: rgba(255, 255, 255, 0.72); }
+
+    .discount-email {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+      max-width: 600px;
+    }
+
+    .discount-email input[type="email"] {
+      min-width: 0;
+      flex: 1 1 auto;
+      min-height: 46px;
+      padding: 10px 12px;
+      border-radius: 6px;
+      border: 1px solid rgba(184, 138, 55, 0.48);
+      background: rgba(255, 255, 255, 0.94);
+      color: #111;
+      outline: none;
+    }
+
+    .discount-email input[aria-invalid="true"] {
+      border-color: #ff5c7a;
+      box-shadow: 0 0 0 3px rgba(255, 92, 122, 0.18);
+    }
+
+    .discount-email button {
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 6px;
+      border: 0;
+      background: var(--gold);
+      color: #17120a;
+      font-weight: 900;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .discount-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .discount-actions .decline {
+      background: transparent;
+      border: 0;
+      color: rgba(255, 255, 255, 0.66);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .discount-actions .btn {
+      background: transparent;
+      border-color: rgba(255, 255, 255, 0.34);
+      color: #fff;
+    }
+
+    .site-notifications {
+      position: fixed;
+      right: clamp(14px, 3vw, 28px);
+      bottom: clamp(80px, 9vh, 110px);
+      z-index: 95;
+      display: grid;
+      gap: 10px;
+      width: min(360px, calc(100vw - 28px));
+      pointer-events: none;
+    }
+
+    .site-toast {
+      display: grid;
+      grid-template-columns: 34px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 13px 14px;
+      border-radius: 8px;
+      color: #fff;
+      background: rgba(18, 18, 16, 0.96);
+      border: 1px solid rgba(184, 138, 55, 0.34);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.26);
+      transform: translateY(12px);
+      opacity: 0;
+      animation: toastIn 180ms ease forwards;
+      pointer-events: auto;
+    }
+
+    .site-toast.success { border-color: rgba(56, 164, 118, 0.55); }
+    .site-toast.error { border-color: rgba(255, 92, 122, 0.55); }
+
+    .toast-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: inline-grid;
+      place-items: center;
+      background: rgba(184, 138, 55, 0.18);
+      color: #f4d087;
+      font-weight: 900;
+    }
+
+    .site-toast strong {
+      display: block;
+      font-size: 0.92rem;
+      line-height: 1.2;
+    }
+
+    .site-toast span {
+      display: block;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.82rem;
+      line-height: 1.35;
+      margin-top: 2px;
+    }
+
+    .toast-close {
+      border: 0;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.7);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    .site-toast.removing {
+      animation: toastOut 160ms ease forwards;
+    }
+
+    @keyframes toastIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes toastOut {
+      to { opacity: 0; transform: translateY(10px); }
+    }
+
+    @media (max-width: 680px) {
+      .discount-modal .sale-banner {
+        min-height: 300px;
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .discount-watch {
+        width: min(150px, 48vw);
+      }
+
+      .discount-copy {
+        text-align: center;
+        justify-self: center;
+      }
+
+      .discount-email {
+        flex-direction: column;
+      }
+
+      .discount-email input[type="email"],
+      .discount-email button {
+        width: 100%;
+      }
+    }
+
+    /* Floating CTA */
+    .discount-cta {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 66;
+      background: var(--ink);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      font-weight: 800;
+    }
+    .discount-cta .x { font-size: 1.1rem; opacity: 0.9; }
+  </style>
+</head>
+<body>
+  <div class="preloader" id="preloader" role="status" aria-hidden="false">
+    <div class="spinner">
+      <svg width="68" height="68" viewBox="0 0 68 68" fill="none" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="g" x1="0" x2="1">
+            <stop offset="0%" stop-color="#b88a37"/>
+            <stop offset="50%" stop-color="#151515"/>
+            <stop offset="100%" stop-color="#b88a37"/>
+          </linearGradient>
+        </defs>
+        <circle cx="34" cy="34" r="24" stroke="url(#g)" stroke-width="6" stroke-linecap="round"></circle>
+      </svg>
+      <span class="preloader-brand">CHRONO24</span>
+      <span class="preloader-note">Luxury sale loading</span>
+    </div>
+  </div>
+  <div class="floating-watch-layer" aria-hidden="true">
+    <span class="floating-watch one gold">
+      <svg viewBox="0 0 120 120" fill="none" role="img">
+        <path d="M47 6h26l5 25H42L47 6Z" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M42 89h36l-5 25H47l-5-25Z" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+        <circle cx="60" cy="60" r="31" stroke="currentColor" stroke-width="4"/>
+        <circle cx="60" cy="60" r="23" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M60 42v20l14 8" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <path d="M31 55h7M82 55h7M55 31v7M55 82v7" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </span>
+    <span class="floating-watch two ink">
+      <svg viewBox="0 0 120 120" fill="none" role="img">
+        <path d="M45 5h30l4 23H41l4-23Z" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M41 92h38l-4 23H45l-4-23Z" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+        <rect x="28" y="28" width="64" height="64" rx="18" stroke="currentColor" stroke-width="4"/>
+        <circle cx="60" cy="60" r="22" stroke="currentColor" stroke-width="2"/>
+        <path d="M60 46v15l10 11" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <path d="M92 55h9M19 55h9" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </span>
+    <span class="floating-watch three green">
+      <svg viewBox="0 0 120 120" fill="none" role="img">
+        <path d="M50 7h20l8 24H42l8-24Z" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M42 89h36l-8 24H50l-8-24Z" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+        <circle cx="60" cy="60" r="33" stroke="currentColor" stroke-width="4"/>
+        <path d="M43 60h34M60 43v34" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+        <path d="M60 39v23l-12 9" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+    </span>
+    <span class="floating-watch four gold">
+      <svg viewBox="0 0 120 120" fill="none" role="img">
+        <path d="M48 4h24l6 26H42l6-26Z" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M42 90h36l-6 26H48l-6-26Z" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+        <circle cx="60" cy="60" r="32" stroke="currentColor" stroke-width="4"/>
+        <circle cx="60" cy="60" r="5" fill="currentColor"/>
+        <path d="M60 36v24h18" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <path d="M42 42l5 5M78 42l-5 5M42 78l5-5M78 78l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </span>
+  </div>
+  <header class="topbar">
+    <a class="brand" href="#">CHRONO24</a>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">Menu</button>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="#categories">Collections</a>
+      <a href="#shop">Luxury Watches</a>
+      <a href="#payment">Payment</a>
+      <a href="#payment-proof-page">Payment Proof</a>
+      <button class="wishlist-count" id="wishlist-count" type="button">Wishlist (0)</button>
+      <button class="bag" type="button">View Bag</button>
+    </nav>
+  </header>
+  <section class="promo-ad" aria-label="Featured watch sale">
+    <div class="promo-watch-frame">
+      <img id="promo-watch-image" src="" alt="">
+    </div>
+    <div class="promo-message">
+      <span class="promo-title" id="promo-title">Luxury Watch Sale: Up to $5,000 Off</span>
+      <span class="promo-divider" aria-hidden="true"></span>
+      <span class="promo-model" id="promo-model">Featured watch loading</span>
+    </div>
+    <a class="promo-cta" id="promo-shop" href="#shop">Shop Now</a>
+  </section>
+  <section class="feature-ticker" aria-label="Best features and contact">
+    <div class="ticker-track">
+      <span class="ticker-item"><span class="ticker-dot"></span> Best Features: luxury watch collections from Rolex, Cartier, Patek Philippe, Omega, and more</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Secure checkout with Bitcoin only</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Insured shipping included on premium watch orders</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Contact us: <a class="ticker-link" href="mailto:chrono24@gmail.com">chrono24@gmail.com</a></span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Best Features: luxury watch collections from Rolex, Cartier, Patek Philippe, Omega, and more</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Secure checkout with Bitcoin only</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Insured shipping included on premium watch orders</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Contact us: <a class="ticker-link" href="mailto:chrono24@gmail.com">chrono24@gmail.com</a></span>
+    </div>
+  </section>
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+  <aside class="wishlist-drawer" id="wishlist-drawer" aria-label="Wishlist drawer" aria-hidden="true">
+    <div class="drawer-head">
+      <div class="drawer-tabs">
+        <span class="active" id="drawer-wishlist-tab">Wishlist(0)</span>
+        <span>My Account</span>
+        <button id="drawer-bag-tab" type="button">Bag(0)</button>
+      </div>
+      <button class="drawer-close" id="drawer-close" type="button" aria-label="Close wishlist">×</button>
+    </div>
+    <div class="wishlist-list" id="wishlist-list"></div>
+    <div class="drawer-actions">
+      <button class="save-wishlist" type="button" id="save-wishlist">Save Wishlist</button>
+      <a class="view-wishlist" href="#shop" id="view-wishlist">View Wishlist</a>
+    </div>
+  </aside>
+  <aside class="bag-drawer" id="bag-drawer" aria-label="Shopping bag drawer" aria-hidden="true">
+    <div class="drawer-head">
+      <div class="drawer-tabs">
+        <span class="active" id="bag-drawer-title">Bag(0)</span>
+      </div>
+      <button class="drawer-close" id="bag-drawer-close" type="button" aria-label="Close bag">&times;</button>
+    </div>
+    <div class="bag-list" id="bag-list"></div>
+    <div class="drawer-actions">
+      <div class="bag-total">
+        <span>Total</span>
+        <span id="bag-drawer-total">$0</span>
+      </div>
+      <button class="checkout-bag" type="button" id="checkout-bag">Checkout with Bitcoin</button>
+      <a class="view-wishlist" href="#shop" id="continue-shopping">Continue Shopping</a>
+    </div>
+  </aside>
+  <div class="product-backdrop" id="product-backdrop"></div>
+  <section class="product-modal" id="product-modal" aria-label="Product details" aria-hidden="true">
+    <div class="product-detail">
+      <div class="product-gallery">
+        <div class="product-hero-image">
+          <img id="detail-image" src="" alt="">
+        </div>
+        <div class="product-thumbs" aria-hidden="true">
+          <div class="product-thumb"><img id="detail-thumb-one" src="" alt=""></div>
+          <div class="product-thumb"><img id="detail-thumb-two" src="" alt=""></div>
+          <div class="product-thumb"><img id="detail-thumb-three" src="" alt=""></div>
+        </div>
+      </div>
+      <div class="product-info">
+        <button class="product-close" id="product-close" type="button" aria-label="Close product details">&times;</button>
+        <div class="product-brand" id="detail-brand"></div>
+        <h2 class="product-title" id="detail-title"></h2>
+        <div class="product-sku" id="detail-sku"></div>
+        <div class="product-review">
+          <span class="product-stars" aria-label="Five star rating">&#9734;&#9734;&#9734;&#9734;&#9734;</span>
+          <a href="#shop">Write a review</a>
+        </div>
+        <div class="product-badges">
+          <span class="product-badge">IN STOCK</span>
+          <span class="product-badge discount" id="detail-discount">SALE</span>
+          <span class="product-badge trade">TRADE-IN ELIGIBLE</span>
+          <span class="product-condition">&#10003; Condition: New</span>
+        </div>
+        <div class="product-retail" id="detail-retail"></div>
+        <div class="product-price" id="detail-price"></div>
+        <div class="product-finance" id="detail-finance"></div>
+        <p class="product-description" id="detail-description"></p>
+        <div class="product-actions">
+          <button class="detail-add" id="detail-add" type="button">Add to Bag</button>
+          <button class="detail-wishlist" id="detail-wishlist" type="button">Add to Wishlist</button>
+        </div>
+        <div class="product-notes">
+          <span>Authenticity verified before shipment.</span>
+          <span>Insured shipping included on luxury watch orders.</span>
+          <span>Payment available by Bitcoin only.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Swiss-inspired wrist watches</p>
+        <h1>CHRONO24</h1>
+        <h2>TIME IS OUR THING</h2>
+        <p>Curated luxury wrist watches for collectors, executives, and anyone who believes precision should look unforgettable.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#shop">Shop Watches</a>
+          <a class="btn btn-secondary" href="#categories">Explore Categories</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="categories">
+      <div class="section-head">
+        <h2>Luxury Watch Categories</h2>
+        <p>Choose by occasion, movement, finish, brand, or browse every model in one place.</p>
+      </div>
+      <div class="categories">
+        <article class="category" data-category="All Models" tabindex="0">
+          <img src="https://images.unsplash.com/photo-1517463700628-5103184eac47?auto=format&fit=crop&w=900&q=85" alt="Collection of luxury wrist watches">
+          <div class="category-info">
+            <h3>All Models</h3>
+            <p>Browse every Rolex, Patek Philippe, Audemars Piguet, Omega, and luxury watch model.</p>
+          </div>
+        </article>
+        <article class="category" data-category="Gold Dress Watches" tabindex="0">
+          <img src="https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&w=900&q=85" alt="Gold dress wrist watch">
+          <div class="category-info">
+            <h3>Gold Dress Watches</h3>
+            <p>Polished cases, slim profiles, formal finishing.</p>
+          </div>
+        </article>
+        <article class="category" data-category="Automatic Steel" tabindex="0">
+          <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=900&q=85" alt="Steel automatic wrist watch">
+          <div class="category-info">
+            <h3>Automatic Steel</h3>
+            <p>Everyday mechanical watches with bracelet builds.</p>
+          </div>
+        </article>
+        <article class="category" data-category="Sport Chronographs" tabindex="0">
+          <img src="https://images.unsplash.com/photo-1533139502658-0198f920d8e8?auto=format&fit=crop&w=900&q=85" alt="Sport chronograph wrist watch">
+          <div class="category-info">
+            <h3>Sport Chronographs</h3>
+            <p>Timing bezels, bold dials, high-performance details.</p>
+          </div>
+        </article>
+        <article class="category" data-category="Ceramic Limited Editions" tabindex="0">
+          <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=900&q=85" alt="Black ceramic luxury wrist watch">
+          <div class="category-info">
+            <h3>Ceramic Limited Editions</h3>
+            <p>Low-run designs in black ceramic and rare finishes.</p>
+          </div>
+        </article>
+      </div>
+      <div class="brand-categories" aria-label="Luxury watch brand categories">
+        <a class="brand-chip all-models active" href="#shop" data-category="All Models">All Models</a>
+        <a class="brand-chip" href="#shop" data-category="Rolex">Rolex</a>
+        <a class="brand-chip" href="#shop" data-category="Patek Philippe">Patek Philippe</a>
+        <a class="brand-chip" href="#shop" data-category="Audemars Piguet">Audemars Piguet</a>
+        <a class="brand-chip" href="#shop" data-category="Richard Mille">Richard Mille</a>
+        <a class="brand-chip" href="#shop" data-category="Vacheron Constantin">Vacheron Constantin</a>
+        <a class="brand-chip" href="#shop" data-category="Cartier">Cartier</a>
+        <a class="brand-chip" href="#shop" data-category="Omega">Omega</a>
+        <a class="brand-chip" href="#shop" data-category="Jaeger-LeCoultre">Jaeger-LeCoultre</a>
+        <a class="brand-chip" href="#shop" data-category="A. Lange &amp; Sohne">A. Lange &amp; Sohne</a>
+        <a class="brand-chip" href="#shop" data-category="Breguet">Breguet</a>
+        <a class="brand-chip" href="#shop" data-category="Hublot">Hublot</a>
+        <a class="brand-chip" href="#shop" data-category="IWC Schaffhausen">IWC Schaffhausen</a>
+        <a class="brand-chip" href="#shop" data-category="Panerai">Panerai</a>
+        <a class="brand-chip" href="#shop" data-category="Breitling">Breitling</a>
+        <a class="brand-chip" href="#shop" data-category="TAG Heuer">TAG Heuer</a>
+        <a class="brand-chip" href="#shop" data-category="Grand Seiko">Grand Seiko</a>
+        <a class="brand-chip" href="#shop" data-category="Tudor">Tudor</a>
+        <a class="brand-chip" href="#shop" data-category="Chopard">Chopard</a>
+        <a class="brand-chip" href="#shop" data-category="Piaget">Piaget</a>
+        <a class="brand-chip" href="#shop" data-category="Blancpain">Blancpain</a>
+        <a class="brand-chip" href="#shop" data-category="Ulysse Nardin">Ulysse Nardin</a>
+        <a class="brand-chip" href="#shop" data-category="Zenith">Zenith</a>
+        <a class="brand-chip" href="#shop" data-category="Girard-Perregaux">Girard-Perregaux</a>
+        <a class="brand-chip" href="#shop" data-category="Parmigiani Fleurier">Parmigiani Fleurier</a>
+        <a class="brand-chip" href="#shop" data-category="Franck Muller">Franck Muller</a>
+      </div>
+    </section>
+
+    <section class="section shop-band" id="shop">
+      <div class="section-head">
+        <h2>Featured Watches</h2>
+        <p>Luxury wrist watches selected for movement quality, finishing, and long-term collectability.</p>
+      </div>
+      <div class="filter-row" aria-label="Watch filters">
+        <label for="search-filter">Search</label>
+        <input class="search-field" id="search-filter" type="search" placeholder="Search brand, model, category">
+        <label for="category-filter">Category</label>
+        <select id="category-filter">
+          <option>All Models</option>
+          <option>Rolex</option>
+          <option>Patek Philippe</option>
+          <option>Audemars Piguet</option>
+          <option>Richard Mille</option>
+          <option>Vacheron Constantin</option>
+          <option>Cartier</option>
+          <option>Omega</option>
+          <option>Jaeger-LeCoultre</option>
+          <option>A. Lange &amp; Sohne</option>
+          <option>Breguet</option>
+          <option>Hublot</option>
+          <option>IWC Schaffhausen</option>
+          <option>Panerai</option>
+          <option>Breitling</option>
+          <option>TAG Heuer</option>
+          <option>Grand Seiko</option>
+          <option>Tudor</option>
+          <option>Chopard</option>
+          <option>Piaget</option>
+          <option>Blancpain</option>
+          <option>Ulysse Nardin</option>
+          <option>Zenith</option>
+          <option>Girard-Perregaux</option>
+          <option>Parmigiani Fleurier</option>
+          <option>Franck Muller</option>
+          <option>Gold Dress Watches</option>
+          <option>Automatic Steel</option>
+          <option>Sport Chronographs</option>
+          <option>Ceramic Limited Editions</option>
+        </select>
+        <label for="sort-filter">Sort</label>
+        <select id="sort-filter">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: Lowest to Highest</option>
+          <option value="price-desc">Price: Highest to Lowest</option>
+        </select>
+      </div>
+      <div class="watch-grid" id="watch-grid"></div>
+    </section>
+
+    <section class="section" id="payment">
+      <div class="section-head">
+        <h2>Bitcoin Payment</h2>
+        <p>Checkout supports Bitcoin payment for luxury watch orders.</p>
+      </div>
+      <div class="payment-layout">
+        <div class="checkout">
+          <h3>Bitcoin Payment Method</h3>
+          <p class="checkout-intro">A private checkout flow for high-value watch orders. Review your bag, confirm the order, then send the quoted total to the Bitcoin wallet below.</p>
+          <div class="checkout-steps" aria-label="Checkout steps">
+            <div class="checkout-step">
+              <span>1</span>
+              <strong>Review your selected timepieces</strong>
+            </div>
+            <div class="checkout-step">
+              <span>2</span>
+              <strong>Confirm the Bitcoin order total</strong>
+            </div>
+            <div class="checkout-step">
+              <span>3</span>
+              <strong>Complete payment from your wallet</strong>
+            </div>
+          </div>
+          <div class="payment-options">
+            <label class="payment-option">
+              <input type="radio" name="payment" value="Bitcoin" checked>
+              <span>
+                <strong>Bitcoin</strong>
+                <span>Pay securely with BTC after order confirmation.</span>
+              </span>
+            </label>
+          </div>
+          <div class="payment-details" id="payment-details" aria-live="polite"></div>
+          <a class="proof-page-link" href="#payment-proof-page">Open Payment Proof Page</a>
+          <div class="checkout-assurance" aria-label="Checkout assurances">
+            <span>Authenticity checked</span>
+            <span>Insured shipping</span>
+            <span>Private invoice support</span>
+          </div>
+        </div>
+        <aside class="summary" aria-label="Order summary">
+          <h3>Order Summary</h3>
+          <p class="summary-note">Your selected watches are held in this browser until checkout is confirmed.</p>
+          <div class="cart-items" id="cart-items"></div>
+          <dl>
+            <div>
+              <dt>Items</dt>
+              <dd id="cart-count">0</dd>
+            </div>
+            <div>
+              <dt>Insured shipping</dt>
+              <dd>Included</dd>
+            </div>
+            <div>
+              <dt>Total</dt>
+              <dd id="cart-total">$0</dd>
+            </div>
+          </dl>
+          <button type="button" id="confirm-order">Confirm Order</button>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="payment-proof-page">
+      <div class="section-head">
+        <h2>Payment Proof</h2>
+        <p>Submit your email, payment proof, and transaction hash after sending Bitcoin.</p>
+      </div>
+      <div class="proof-page-shell">
+        <div class="proof-page-copy">
+          <h3>Send Proof For Review</h3>
+          <p>Use this page after completing the BTC transfer. The private desk can match your payment faster when the email, receipt, and transaction hash are submitted together.</p>
+          <div class="proof-page-list" aria-label="Required payment proof details">
+            <span>Email address</span>
+            <span>Payment proof file</span>
+            <span>Bitcoin transaction hash</span>
+          </div>
+        </div>
+        <div class="proof-page-panel">
+          <form class="payment-proof" id="payment-proof-form" action="https://formspree.io/f/xgoqjnvl" method="POST" enctype="multipart/form-data">
+            <h4>Submit Payment Proof</h4>
+            <p>After sending Bitcoin, add your email, payment proof, and transaction hash so the private desk can match your order.</p>
+            <div class="proof-grid">
+              <div class="proof-field">
+                <label for="proof-email">Email address</label>
+                <input id="proof-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+              </div>
+              <div class="proof-field">
+                <label for="proof-file">Payment proof</label>
+                <input class="proof-upload" id="proof-file" name="payment_proof" type="file" accept="image/*,.pdf" required>
+              </div>
+              <div class="proof-field full">
+                <label for="proof-hash">Transaction hash</label>
+                <input id="proof-hash" name="transaction_hash" type="text" placeholder="Paste your BTC transaction hash" autocomplete="off" required>
+              </div>
+              <div class="proof-field full">
+                <label for="proof-note">Order note</label>
+                <textarea id="proof-note" name="order_note" placeholder="Optional: wallet name, order contact, or delivery note"></textarea>
+              </div>
+            </div>
+            <button class="proof-submit" type="submit">Submit Payment Proof</button>
+            <span class="proof-note">This demo stores the proof summary in this browser. Connect a backend to receive uploaded files.</span>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Aurum Timepieces</span>
+    <span>Luxury wrist watches with Bitcoin checkout.</span>
+  </footer>
+  <!-- Discount popup -->
+  <div class="discount-backdrop" id="discount-backdrop" aria-hidden="true">
+    <div class="discount-modal" role="dialog" aria-modal="true" aria-labelledby="discount-title">
+      <div class="sale-banner">
+        <div class="discount-watch" aria-hidden="true">
+          <svg viewBox="0 0 140 140" fill="none">
+            <path d="M55 8h30l7 34H48l7-34Z" fill="rgba(255,255,255,0.08)" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/>
+            <path d="M48 98h44l-7 34H55l-7-34Z" fill="rgba(255,255,255,0.08)" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/>
+            <circle cx="70" cy="70" r="40" fill="#111" stroke="currentColor" stroke-width="6"/>
+            <circle cx="70" cy="70" r="29" stroke="rgba(255,255,255,0.62)" stroke-width="2"/>
+            <path d="M70 48v25l18 11" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M35 70h8M97 70h8M70 35v8M70 97v8" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="discount-copy">
+          <div class="ribbon">LIMITED TIME ONLY</div>
+          <h2 class="big-sale" id="discount-title">Big Sale</h2>
+          <div class="sub">Up to 50% off select luxury wrist watches.</div>
+        </div>
+      </div>
+      <div class="discount-body">
+        <p>Enter your email and we will send a private discount code for qualifying orders.</p>
+        <div class="discount-email">
+          <input id="discount-email" type="email" placeholder="enter email address" aria-label="Email address">
+          <button id="discount-continue">GET CODE</button>
+        </div>
+        <div class="discount-actions">
+          <button class="decline" id="discount-decline">I don't want a discount</button>
+          <a class="btn btn-primary" href="#shop" id="discount-shopnow">SHOP NOW</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="discount-cta" id="discount-cta" aria-label="Get $20 off">
+    <span>GET $20 OFF</span>
+    <span class="x" aria-hidden="true">&times;</span>
+  </button>
+  <div class="site-notifications" id="site-notifications" aria-live="polite" aria-atomic="true"></div>
+
+  <script>
+    const bitcoinWallet = "bc1q7cs7gsl6trlazwvfw37w9n3mwarmcyyphzvhww";
+    const siteNotifications = document.getElementById("site-notifications");
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      }[char]));
+    }
+
+    function showSiteNotification(title, message, type = "success") {
+      if (!siteNotifications) {
+        return;
+      }
+
+      const toast = document.createElement("div");
+      toast.className = `site-toast ${type}`;
+      toast.innerHTML = `
+        <span class="toast-icon" aria-hidden="true">${type === "error" ? "!" : "i"}</span>
+        <div>
+          <strong>${escapeHtml(title)}</strong>
+          <span>${escapeHtml(message)}</span>
+        </div>
+        <button class="toast-close" type="button" aria-label="Dismiss notification">&times;</button>
+      `;
+
+      const closeToast = () => {
+        toast.classList.add("removing");
+        window.setTimeout(() => toast.remove(), 170);
+      };
+
+      toast.querySelector(".toast-close").addEventListener("click", closeToast);
+      siteNotifications.appendChild(toast);
+      window.setTimeout(closeToast, 4200);
+    }
+    const watches = [
+      // Original Watches
+      { id: 1, brand: "Rolex", model: "Rolex Submariner Date", category: "Automatic Steel", size: "41mm", originalPrice: 20200, price: 15200, image: "photo_1_2026-05-25_20-40-37.jpg" },
+      { id: 2, brand: "Rolex", model: "Rolex Day-Date 40", category: "Gold Dress Watches", size: "40mm", originalPrice: 47800, price: 42800, image: "photo_2_2026-05-25_20-40-37.jpg" },
+      { id: 3, brand: "Patek Philippe", model: "Patek Philippe Nautilus", category: "Automatic Steel", size: "40mm", originalPrice: 94500, price: 89500, image: "photo_23_2026-05-25_20-40-37.jpg" },
+      { id: 4, brand: "Audemars Piguet", model: "Royal Oak Chronograph", category: "Sport Chronographs", size: "41mm", originalPrice: 81500, price: 76500, image: "photo_24_2026-05-25_20-40-37.jpg" },
+      { id: 5, brand: "Richard Mille", model: "RM 011 Flyback", category: "Ceramic Limited Editions", size: "50mm", originalPrice: 243000, price: 238000, image: "photo_25_2026-05-25_20-40-37.jpg" },
+      { id: 6, brand: "Vacheron Constantin", model: "Overseas Dual Time", category: "Automatic Steel", size: "41mm", originalPrice: 36500, price: 31500, image: "photo_26_2026-05-25_20-40-37.jpg" },
+      { id: 7, brand: "Cartier", model: "Santos de Cartier", category: "Gold Dress Watches", size: "39.8mm", originalPrice: 16400, price: 11400, image: "cartier/cartier-santos-large-model-automatic-grey-dial-mens-watch-wssa0037.jpg" },
+      { id: 8, brand: "Omega", model: "Speedmaster Moonwatch", category: "Sport Chronographs", size: "42mm", originalPrice: 13300, price: 8300, image: "photo_28_2026-05-25_20-40-37.jpg" },
+      { id: 9, brand: "Jaeger-LeCoultre", model: "Reverso Tribute", category: "Gold Dress Watches", size: "45.6mm", originalPrice: 29800, price: 24800, image: "photo_29_2026-05-25_20-40-37.jpg" },
+      { id: 10, brand: "A. Lange & Sohne", model: "Lange 1 Moon Phase", category: "Gold Dress Watches", size: "38.5mm", originalPrice: 64000, price: 59000, image: "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=900&q=85" },
+      { id: 11, brand: "Breguet", model: "Classique 5177", category: "Gold Dress Watches", size: "38mm", originalPrice: 32600, price: 27600, image: "https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&w=900&q=85" },
+      { id: 12, brand: "Hublot", model: "Big Bang Unico", category: "Ceramic Limited Editions", size: "42mm", originalPrice: 24900, price: 19900, image: "https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?auto=format&fit=crop&w=900&q=85" },
+      { id: 13, brand: "IWC Schaffhausen", model: "Pilot Chronograph", category: "Sport Chronographs", size: "43mm", originalPrice: 12800, price: 7800, image: "https://images.unsplash.com/photo-1600003014755-ba31aa59c4b6?auto=format&fit=crop&w=900&q=85" },
+      { id: 14, brand: "Panerai", model: "Luminor Marina", category: "Automatic Steel", size: "44mm", originalPrice: 14200, price: 9200, image: "https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?auto=format&fit=crop&w=900&q=85" },
+      { id: 15, brand: "Breitling", model: "Navitimer B01", category: "Sport Chronographs", size: "43mm", originalPrice: 14650, price: 9650, image: "https://images.unsplash.com/photo-1619946794135-5bc917a27793?auto=format&fit=crop&w=900&q=85" },
+      { id: 16, brand: "TAG Heuer", model: "Carrera Chronograph", category: "Sport Chronographs", size: "42mm", originalPrice: 11400, price: 6400, image: "https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?auto=format&fit=crop&w=900&q=85" },
+      { id: 17, brand: "Grand Seiko", model: "Spring Drive Snowflake", category: "Automatic Steel", size: "41mm", originalPrice: 11200, price: 6200, image: "https://images.unsplash.com/photo-1539874754764-5a96559165b0?auto=format&fit=crop&w=900&q=85" },
+      { id: 18, brand: "Tudor", model: "Black Bay 58", category: "Automatic Steel", size: "39mm", originalPrice: 9300, price: 4300, image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85" },
+      { id: 19, brand: "Chopard", model: "Alpine Eagle", category: "Automatic Steel", size: "41mm", originalPrice: 19800, price: 14800, image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=900&q=85" },
+      { id: 20, brand: "Piaget", model: "Altiplano Automatic", category: "Gold Dress Watches", size: "38mm", originalPrice: 31900, price: 26900, image: "https://images.unsplash.com/photo-1526045431048-f857369baa09?auto=format&fit=crop&w=900&q=85" },
+      { id: 21, brand: "Blancpain", model: "Fifty Fathoms", category: "Automatic Steel", size: "45mm", originalPrice: 21400, price: 16400, image: "https://images.unsplash.com/photo-1594576722512-582bcd46fba3?auto=format&fit=crop&w=900&q=85" },
+      { id: 22, brand: "Ulysse Nardin", model: "Marine Torpilleur", category: "Automatic Steel", size: "42mm", originalPrice: 13900, price: 8900, image: "https://images.unsplash.com/photo-1517463700628-5103184eac47?auto=format&fit=crop&w=900&q=85" },
+      { id: 23, brand: "Zenith", model: "Chronomaster Sport", category: "Sport Chronographs", size: "41mm", originalPrice: 15400, price: 10400, image: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=900&q=85" },
+      { id: 24, brand: "Girard-Perregaux", model: "Laureato", category: "Automatic Steel", size: "42mm", originalPrice: 19200, price: 14200, image: "https://images.unsplash.com/photo-1533139502658-0198f920d8e8?auto=format&fit=crop&w=900&q=85" },
+      { id: 25, brand: "Parmigiani Fleurier", model: "Tonda PF Micro-Rotor", category: "Automatic Steel", size: "40mm", originalPrice: 27800, price: 22800, image: "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=900&q=85" },
+      { id: 26, brand: "Franck Muller", model: "Vanguard", category: "Ceramic Limited Editions", size: "44mm", originalPrice: 22600, price: 17600, image: "https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=900&q=85" },
+      
+      // New Rolex Watches - Discounted $5000 each
+      { id: 27, brand: "Rolex", model: "Rolex Datejust Two-Tone Rose", category: "Gold Dress Watches", size: "36mm", originalPrice: 18000, price: 13000, image: "photo_3_2026-05-25_20-40-37.jpg" },
+      { id: 28, brand: "Rolex", model: "Rolex Datejust Green Dial", category: "Automatic Steel", size: "41mm", originalPrice: 13500, price: 8500, image: "photo_4_2026-05-25_20-40-37.jpg" },
+      { id: 29, brand: "Rolex", model: "Rolex Datejust Blue Dial", category: "Automatic Steel", size: "41mm", originalPrice: 13500, price: 8500, image: "photo_5_2026-05-25_20-40-37.jpg" },
+      { id: 30, brand: "Rolex", model: "Rolex Cellini Black Dial", category: "Gold Dress Watches", size: "39mm", originalPrice: 16000, price: 11000, image: "photo_6_2026-05-25_20-40-37.jpg" },
+      { id: 31, brand: "Rolex", model: "Rolex Datejust Roman Numerals", category: "Gold Dress Watches", size: "36mm", originalPrice: 14500, price: 9500, image: "photo_7_2026-05-25_20-40-37.jpg" },
+      { id: 32, brand: "Rolex", model: "Rolex Datejust Steel Blue", category: "Automatic Steel", size: "41mm", originalPrice: 13500, price: 8500, image: "photo_8_2026-05-25_20-40-37.jpg" },
+      { id: 33, brand: "Rolex", model: "Rolex Datejust Brown Two-Tone", category: "Gold Dress Watches", size: "36mm", originalPrice: 18000, price: 13000, image: "photo_9_2026-05-25_20-40-37.jpg" },
+      { id: 34, brand: "Rolex", model: "Rolex Datejust Black Steel", category: "Automatic Steel", size: "41mm", originalPrice: 13500, price: 8500, image: "photo_10_2026-05-25_20-40-37.jpg" },
+      { id: 35, brand: "Rolex", model: "Rolex Datejust Silver Steel", category: "Automatic Steel", size: "41mm", originalPrice: 13500, price: 8500, image: "photo_11_2026-05-25_20-40-37.jpg" },
+      { id: 36, brand: "Rolex", model: "Rolex Datejust Two-Tone Gold Steel", category: "Gold Dress Watches", size: "36mm", originalPrice: 18000, price: 13000, image: "photo_12_2026-05-25_20-40-37.jpg" },
+      { id: 37, brand: "Rolex", model: "Rolex Daytona Rose Gold White", category: "Sport Chronographs", size: "40mm", originalPrice: 42000, price: 37000, image: "photo_13_2026-05-25_20-40-37.jpg" },
+      { id: 38, brand: "Rolex", model: "Rolex Oyster Perpetual Black", category: "Automatic Steel", size: "41mm", originalPrice: 10000, price: 5000, image: "photo_14_2026-05-25_20-40-37.jpg" },
+      { id: 39, brand: "Rolex", model: "Rolex Daytona Two-Tone Black", category: "Sport Chronographs", size: "40mm", originalPrice: 38000, price: 33000, image: "photo_15_2026-05-25_20-40-37.jpg" },
+      { id: 40, brand: "Rolex", model: "Rolex Datejust Diamond Set", category: "Gold Dress Watches", size: "36mm", originalPrice: 22000, price: 17000, image: "photo_16_2026-05-25_20-40-37.jpg" },
+      { id: 41, brand: "Rolex", model: "Rolex Daytona Rose Gold Black", category: "Sport Chronographs", size: "40mm", originalPrice: 42000, price: 37000, image: "photo_17_2026-05-25_20-40-37.jpg" },
+      { id: 42, brand: "Rolex", model: "Rolex Daytona Steel White", category: "Sport Chronographs", size: "40mm", originalPrice: 18500, price: 13500, image: "photo_18_2026-05-25_20-40-37.jpg" },
+      { id: 43, brand: "Rolex", model: "Rolex Daytona Black Rubber", category: "Sport Chronographs", size: "40mm", originalPrice: 18500, price: 13500, image: "photo_19_2026-05-25_20-40-37.jpg" },
+      { id: 44, brand: "Rolex", model: "Rolex Datejust Two-Tone White", category: "Gold Dress Watches", size: "36mm", originalPrice: 18000, price: 13000, image: "photo_20_2026-05-25_20-40-37.jpg" },
+      { id: 45, brand: "Rolex", model: "Rolex Datejust Green Two-Tone", category: "Automatic Steel", size: "41mm", originalPrice: 13500, price: 8500, image: "photo_21_2026-05-25_20-40-37.jpg" },
+      { id: 46, brand: "Rolex", model: "Rolex Daytona Rose Gold Chocolate", category: "Sport Chronographs", size: "40mm", originalPrice: 42000, price: 37000, image: "photo_22_2026-05-25_20-40-37.jpg" }
+    ];
+
+    const brandExpansions = [
+      { brand: "Patek Philippe", models: [["Aquanaut 5167A", "Automatic Steel", "40.8mm", 22950], ["Calatrava 5227R", "Gold Dress Watches", "39mm", 39600], ["Nautilus 5726/1A", "Automatic Steel", "40.5mm", 68712], ["World Time 5230P", "Gold Dress Watches", "38.5mm", 63800], ["Annual Calendar 5205G", "Gold Dress Watches", "40mm", 57500], ["Complications 5524G Pilot Travel Time", "Gold Dress Watches", "42mm", 62600], ["Twenty-4 Automatic", "Automatic Steel", "36mm", 28900], ["Cubitus 5821/1A", "Automatic Steel", "45mm", 41243], ["Aquanaut Travel Time 5164A", "Automatic Steel", "40.8mm", 60100], ["Nautilus Moon Phase 5712/1A", "Automatic Steel", "40mm", 58400], ["Perpetual Calendar 5327G", "Gold Dress Watches", "39mm", 95000], ["Chronograph 5172G", "Sport Chronographs", "41mm", 82500], ["Golden Ellipse 5738R", "Gold Dress Watches", "34.5mm", 39500], ["Calatrava Weekly Calendar 5212A", "Automatic Steel", "40mm", 37200], ["Aquanaut Chronograph 5968A", "Sport Chronographs", "42.2mm", 64500], ["Grand Complications 5270P", "Gold Dress Watches", "41mm", 205000], ["Nautilus Travel Time 5990/1A", "Sport Chronographs", "40.5mm", 68200]] },
+      { brand: "Audemars Piguet", models: [["Royal Oak Selfwinding 15510ST", "Automatic Steel", "41mm", 32200], ["Royal Oak Jumbo Extra-Thin", "Automatic Steel", "39mm", 37900], ["Royal Oak Offshore Diver", "Automatic Steel", "42mm", 32900], ["Royal Oak Offshore Chronograph", "Sport Chronographs", "43mm", 45100], ["Code 11.59 Selfwinding", "Gold Dress Watches", "41mm", 34600], ["Code 11.59 Chronograph", "Sport Chronographs", "41mm", 54500], ["Royal Oak Frosted Gold", "Gold Dress Watches", "34mm", 62000], ["Royal Oak Flying Tourbillon", "Gold Dress Watches", "41mm", 175000], ["Royal Oak Perpetual Calendar", "Gold Dress Watches", "41mm", 132000], ["Royal Oak Concept GMT", "Ceramic Limited Editions", "44mm", 198000], ["Royal Oak Offshore Music Edition", "Ceramic Limited Editions", "43mm", 52900], ["Royal Oak Chronograph 26240ST", "Sport Chronographs", "41mm", 42300], ["Royal Oak Dual Time", "Automatic Steel", "41mm", 34400], ["Royal Oak 37mm Selfwinding", "Automatic Steel", "37mm", 30400], ["Royal Oak Quartz 33mm", "Automatic Steel", "33mm", 19900], ["Royal Oak Offshore Tourbillon", "Ceramic Limited Editions", "43mm", 245000], ["Royal Oak Mini Frosted Gold", "Gold Dress Watches", "23mm", 34800]] },
+      { brand: "Richard Mille", models: [["RM 005 Automatic", "Ceramic Limited Editions", "38mm", 110000], ["RM 010 Automatic", "Ceramic Limited Editions", "48mm", 145000], ["RM 011 Felipe Massa", "Sport Chronographs", "50mm", 238000], ["RM 030 Automatic", "Ceramic Limited Editions", "50mm", 185000], ["RM 035 Rafael Nadal", "Ceramic Limited Editions", "49mm", 210000], ["RM 055 Bubba Watson", "Ceramic Limited Editions", "50mm", 235000], ["RM 067 Extra Flat", "Gold Dress Watches", "38.7mm", 165000], ["RM 029 Automatic", "Ceramic Limited Editions", "48mm", 155000], ["RM 016 Extra Flat", "Gold Dress Watches", "49.8mm", 120000], ["RM 032 Diver", "Sport Chronographs", "50mm", 190000], ["RM 033 Extra Flat", "Gold Dress Watches", "45.7mm", 135000], ["RM 037 Automatic", "Ceramic Limited Editions", "52mm", 170000], ["RM 060 Regatta", "Sport Chronographs", "50mm", 170000], ["RM 070-01", "Ceramic Limited Editions", "45mm", 155000], ["RM 072 Lifestyle", "Sport Chronographs", "47mm", 188000], ["RM 17-01 Tourbillon", "Ceramic Limited Editions", "48mm", 625000], ["RM 74-02 Tourbillon", "Gold Dress Watches", "52mm", 520000]] },
+      { brand: "Vacheron Constantin", models: [["Overseas Chronograph", "Sport Chronographs", "42.5mm", 37400], ["Overseas Self-Winding", "Automatic Steel", "41mm", 25900], ["Overseas Perpetual Calendar", "Gold Dress Watches", "41.5mm", 105000], ["Patrimony Manual-Winding", "Gold Dress Watches", "40mm", 24400], ["Patrimony Retrograde Day-Date", "Gold Dress Watches", "42.5mm", 47000], ["Traditionnelle Manual-Winding", "Gold Dress Watches", "38mm", 22600], ["Traditionnelle Complete Calendar", "Gold Dress Watches", "41mm", 41500], ["Fiftysix Self-Winding", "Automatic Steel", "40mm", 12700], ["Fiftysix Complete Calendar", "Automatic Steel", "40mm", 24500], ["Historiques American 1921", "Gold Dress Watches", "40mm", 39700], ["Historiques Triple Calendar", "Gold Dress Watches", "40mm", 32900], ["Overseas World Time", "Automatic Steel", "43.5mm", 43500], ["Overseas Tourbillon", "Gold Dress Watches", "42.5mm", 138000], ["Traditionnelle Chronograph", "Sport Chronographs", "42mm", 72000], ["Patrimony Moon Phase", "Gold Dress Watches", "42.5mm", 44000], ["Overseas Everest Dual Time", "Automatic Steel", "41mm", 31200], ["Traditionnelle Perpetual Calendar", "Gold Dress Watches", "41mm", 91000]] },
+      { brand: "Cartier", models: [["Tank Must Large", "Gold Dress Watches", "33.7mm", 3850], ["Tank Louis Cartier", "Gold Dress Watches", "33.7mm", 10200], ["Santos de Cartier Medium", "Automatic Steel", "35.1mm", 7750], ["Santos de Cartier Large", "Automatic Steel", "39.8mm", 8350], ["Santos-Dumont Large", "Gold Dress Watches", "43.5mm", 4300], ["Ballon Bleu de Cartier", "Gold Dress Watches", "40mm", 6900], ["Pasha de Cartier", "Automatic Steel", "41mm", 7500], ["Panthere de Cartier", "Gold Dress Watches", "27mm", 4400], ["Tank Francaise", "Automatic Steel", "32mm", 4650], ["Tank Americaine", "Gold Dress Watches", "44.4mm", 5600], ["Ronde Must de Cartier", "Gold Dress Watches", "40mm", 3600], ["Drive de Cartier", "Gold Dress Watches", "40mm", 6800], ["Clash de Cartier Watch", "Gold Dress Watches", "25mm", 24600], ["Privé Tank Chinoise", "Gold Dress Watches", "39.5mm", 31000], ["Santos Chronograph", "Sport Chronographs", "43.3mm", 10300], ["Rotonde de Cartier", "Gold Dress Watches", "40mm", 9200], ["Tank Cintree", "Gold Dress Watches", "46.3mm", 29000]] },
+      { brand: "Omega", models: [["Seamaster Diver 300M", "Automatic Steel", "42mm", 5900], ["Speedmaster Professional Moonwatch", "Sport Chronographs", "42mm", 8000], ["Seamaster Aqua Terra", "Automatic Steel", "41mm", 6300], ["Planet Ocean 600M", "Automatic Steel", "43.5mm", 7600], ["Globemaster Annual Calendar", "Gold Dress Watches", "41mm", 9100], ["Constellation Co-Axial", "Gold Dress Watches", "39mm", 7200], ["De Ville Prestige", "Gold Dress Watches", "40mm", 4900], ["Seamaster Heritage 300", "Automatic Steel", "41mm", 7000], ["Speedmaster Racing", "Sport Chronographs", "44.25mm", 9100], ["Speedmaster 57", "Sport Chronographs", "40.5mm", 9700], ["Seamaster Ploprof", "Automatic Steel", "55mm", 12500], ["Aqua Terra Worldtimer", "Automatic Steel", "43mm", 9700], ["Railmaster", "Automatic Steel", "40mm", 5200], ["Diver 300M Chronograph", "Sport Chronographs", "44mm", 8600], ["Dark Side of the Moon", "Ceramic Limited Editions", "44.25mm", 14200], ["Seamaster 300 Bronze Gold", "Gold Dress Watches", "41mm", 14100], ["Constellation Globemaster", "Automatic Steel", "39mm", 7800]] },
+      { brand: "Jaeger-LeCoultre", models: [["Reverso Classic Medium", "Gold Dress Watches", "40.1mm", 8500], ["Reverso Tribute Small Seconds", "Gold Dress Watches", "45.6mm", 10000], ["Master Ultra Thin Moon", "Gold Dress Watches", "39mm", 11200], ["Master Control Date", "Automatic Steel", "40mm", 8700], ["Polaris Date", "Automatic Steel", "42mm", 9600], ["Polaris Chronograph", "Sport Chronographs", "42mm", 14500], ["Master Geographic", "Gold Dress Watches", "40mm", 15900], ["Reverso Duoface", "Gold Dress Watches", "47mm", 14800], ["Master Calendar", "Gold Dress Watches", "40mm", 15100], ["Rendez-Vous Night & Day", "Gold Dress Watches", "34mm", 12500], ["Reverso Tribute Chronograph", "Sport Chronographs", "49.4mm", 21500], ["Master Ultra Thin Perpetual", "Gold Dress Watches", "39mm", 31500], ["Polaris Mariner Memovox", "Automatic Steel", "42mm", 19800], ["Geophysic True Second", "Automatic Steel", "39.6mm", 10300], ["Duometre Chronograph", "Sport Chronographs", "42.5mm", 78000], ["Master Grande Tradition", "Gold Dress Watches", "42mm", 95000], ["Reverso Tribute Calendar", "Gold Dress Watches", "49.4mm", 26000]] },
+      { brand: "A. Lange & Sohne", models: [["Lange 1", "Gold Dress Watches", "38.5mm", 46500], ["Saxonia Thin", "Gold Dress Watches", "37mm", 25000], ["1815 Up/Down", "Gold Dress Watches", "39mm", 33600], ["Datograph Up/Down", "Sport Chronographs", "41mm", 106000], ["Zeitwerk", "Gold Dress Watches", "41.9mm", 95000], ["Odysseus Steel", "Automatic Steel", "40.5mm", 35000], ["1815 Chronograph", "Sport Chronographs", "39.5mm", 86000], ["Saxonia Moon Phase", "Gold Dress Watches", "40mm", 41000], ["Richard Lange", "Gold Dress Watches", "40.5mm", 42000], ["Grand Lange 1", "Gold Dress Watches", "41mm", 53000], ["Lange 1 Time Zone", "Gold Dress Watches", "41.9mm", 63000], ["1815 Annual Calendar", "Gold Dress Watches", "40mm", 52000], ["Zeitwerk Date", "Gold Dress Watches", "44.2mm", 110000], ["Triple Split", "Sport Chronographs", "43.2mm", 165000], ["Odysseus Chronograph", "Sport Chronographs", "42.5mm", 145000], ["Little Lange 1", "Gold Dress Watches", "36.8mm", 44500], ["1815 Rattrapante", "Sport Chronographs", "41.2mm", 150000]] },
+      { brand: "Breguet", models: [["Classique 5157", "Gold Dress Watches", "38mm", 20400], ["Classique 5177", "Gold Dress Watches", "38mm", 27600], ["Classique 7787 Moon Phase", "Gold Dress Watches", "39mm", 30300], ["Marine 5517", "Automatic Steel", "40mm", 19400], ["Marine Chronograph 5527", "Sport Chronographs", "42.3mm", 25800], ["Type XX Chronograph", "Sport Chronographs", "42mm", 18500], ["Tradition 7057", "Gold Dress Watches", "40mm", 30100], ["Tradition 7097 Retrograde", "Gold Dress Watches", "40mm", 37900], ["Reine de Naples 8918", "Gold Dress Watches", "36.5mm", 34300], ["Classique 7337", "Gold Dress Watches", "39mm", 45200], ["Marine Alarme Musicale", "Automatic Steel", "40mm", 41000], ["Type XXI Flyback", "Sport Chronographs", "42mm", 16400], ["Classique Chronograph 5287", "Sport Chronographs", "42.5mm", 64800], ["Tradition Quantieme Retrograde", "Gold Dress Watches", "40mm", 39800], ["Classique Tourbillon 3357", "Gold Dress Watches", "35mm", 147000], ["Marine Hora Mundi", "Gold Dress Watches", "43.9mm", 77000], ["Classique 7147", "Gold Dress Watches", "40mm", 25500]] },
+      { brand: "Hublot", models: [["Classic Fusion Titanium", "Automatic Steel", "42mm", 7200], ["Big Bang Unico Titanium", "Sport Chronographs", "42mm", 18400], ["Big Bang Integral Ceramic", "Ceramic Limited Editions", "42mm", 23100], ["Spirit of Big Bang", "Sport Chronographs", "42mm", 23500], ["Classic Fusion Chronograph", "Sport Chronographs", "42mm", 9600], ["Big Bang King Gold", "Gold Dress Watches", "42mm", 36400], ["Big Bang Sang Bleu", "Ceramic Limited Editions", "45mm", 25800], ["Square Bang Unico", "Sport Chronographs", "42mm", 24500], ["Classic Fusion Orlinski", "Ceramic Limited Editions", "40mm", 13400], ["MP-11 Power Reserve", "Ceramic Limited Editions", "45mm", 85000], ["Big Bang Meca-10", "Ceramic Limited Editions", "45mm", 24800], ["Classic Fusion Aerofusion", "Sport Chronographs", "45mm", 15500], ["Big Bang Unico Magic Gold", "Gold Dress Watches", "44mm", 38300], ["Spirit of Big Bang Moonphase", "Gold Dress Watches", "42mm", 31400], ["Big Bang Unico Sapphire", "Ceramic Limited Editions", "42mm", 63000], ["Classic Fusion Gold", "Gold Dress Watches", "42mm", 16900], ["Big Bang Integrated Time Only", "Automatic Steel", "40mm", 17800]] },
+      { brand: "IWC Schaffhausen", models: [["Pilot Chronograph 41", "Sport Chronographs", "41mm", 7350], ["Pilot Mark XX", "Automatic Steel", "40mm", 5250], ["Big Pilot 43", "Automatic Steel", "43mm", 9100], ["Portugieser Chronograph", "Sport Chronographs", "41mm", 8400], ["Portugieser Automatic 40", "Gold Dress Watches", "40mm", 7250], ["Portofino Automatic", "Gold Dress Watches", "40mm", 5050], ["Ingenieur Automatic 40", "Automatic Steel", "40mm", 11700], ["Aquatimer Automatic", "Automatic Steel", "42mm", 6100], ["Pilot Timezoner Chronograph", "Sport Chronographs", "46mm", 13200], ["Big Pilot Perpetual Calendar", "Gold Dress Watches", "46.2mm", 38000], ["Portugieser Perpetual Calendar", "Gold Dress Watches", "44.2mm", 42900], ["Pilot Top Gun Chronograph", "Ceramic Limited Editions", "44.5mm", 10400], ["Pilot Mojave Desert", "Ceramic Limited Editions", "44.5mm", 11800], ["Portugieser Yacht Club", "Sport Chronographs", "44.6mm", 13500], ["Da Vinci Automatic", "Gold Dress Watches", "40mm", 5400], ["Portofino Moon Phase", "Gold Dress Watches", "40mm", 6900], ["Aquatimer Chronograph", "Sport Chronographs", "44mm", 7250]] },
+      { brand: "Panerai", models: [["Luminor Marina PAM01312", "Automatic Steel", "44mm", 8900], ["Radiomir Quaranta", "Gold Dress Watches", "40mm", 6600], ["Submersible QuarantaQuattro", "Automatic Steel", "44mm", 10200], ["Luminor Due", "Gold Dress Watches", "42mm", 7400], ["Radiomir California", "Gold Dress Watches", "45mm", 8500], ["Submersible Carbotech", "Ceramic Limited Editions", "44mm", 17800], ["Luminor Chrono", "Sport Chronographs", "44mm", 10200], ["Radiomir 8 Days", "Gold Dress Watches", "45mm", 9000], ["Luminor GMT", "Automatic Steel", "44mm", 11200], ["Submersible Bronzo", "Gold Dress Watches", "47mm", 17900], ["Luminor Base Logo", "Automatic Steel", "44mm", 5600], ["Radiomir Annual Calendar", "Gold Dress Watches", "45mm", 38000], ["Luminor Perpetual Calendar", "Gold Dress Watches", "44mm", 42000], ["Submersible Luna Rossa", "Automatic Steel", "42mm", 9800], ["Luminor Marina Goldtech", "Gold Dress Watches", "44mm", 24100], ["Radiomir Tre Giorni", "Gold Dress Watches", "45mm", 6400], ["Submersible Chrono", "Sport Chronographs", "47mm", 18500]] },
+      { brand: "Breitling", models: [["Navitimer B01 43", "Sport Chronographs", "43mm", 9650], ["Chronomat B01 42", "Sport Chronographs", "42mm", 8850], ["Superocean Automatic 42", "Automatic Steel", "42mm", 5200], ["Avenger Automatic GMT", "Automatic Steel", "44mm", 5600], ["Premier B01 Chronograph", "Sport Chronographs", "42mm", 9200], ["Top Time B01", "Sport Chronographs", "41mm", 8000], ["Super Chronomat B01", "Sport Chronographs", "44mm", 10600], ["Navitimer Automatic 41", "Automatic Steel", "41mm", 5600], ["Aviator 8 B01", "Sport Chronographs", "43mm", 8100], ["Endurance Pro", "Sport Chronographs", "44mm", 3400], ["Professional Aerospace", "Automatic Steel", "43mm", 4650], ["Superocean Heritage B20", "Automatic Steel", "42mm", 5850], ["Chronomat GMT 40", "Automatic Steel", "40mm", 6150], ["Premier Automatic 40", "Gold Dress Watches", "40mm", 4750], ["Navitimer Cosmonaute", "Sport Chronographs", "41mm", 11600], ["Avenger Chronograph", "Sport Chronographs", "44mm", 6200], ["Chronomat Six Nations", "Sport Chronographs", "42mm", 9800]] },
+      { brand: "TAG Heuer", models: [["Carrera Date", "Automatic Steel", "39mm", 3200], ["Carrera Chronograph", "Sport Chronographs", "42mm", 6400], ["Monaco Chronograph", "Sport Chronographs", "39mm", 7850], ["Aquaracer Professional 300", "Automatic Steel", "42mm", 3600], ["Autavia Flyback Chronograph", "Sport Chronographs", "42mm", 6950], ["Formula 1 Chronograph", "Sport Chronographs", "43mm", 2350], ["Link Automatic", "Automatic Steel", "41mm", 3300], ["Carrera Skipper", "Sport Chronographs", "39mm", 6750], ["Aquaracer Solargraph", "Automatic Steel", "40mm", 3050], ["Monaco Gulf", "Sport Chronographs", "39mm", 8000], ["Carrera Glassbox", "Sport Chronographs", "39mm", 6450], ["Aquaracer GMT", "Automatic Steel", "43mm", 4100], ["Formula 1 Calibre 16", "Sport Chronographs", "44mm", 3600], ["Carrera Twin-Time", "Automatic Steel", "41mm", 4050], ["Monza Flyback", "Sport Chronographs", "42mm", 13850], ["Connected Calibre E4", "Automatic Steel", "45mm", 2050], ["Carrera Tourbillon", "Sport Chronographs", "42mm", 24500]] },
+      { brand: "Grand Seiko", models: [["SBGA211 Snowflake", "Automatic Steel", "41mm", 6200], ["SBGW231 Elegance", "Gold Dress Watches", "37.3mm", 4300], ["SBGH295 44GS", "Automatic Steel", "40mm", 6900], ["SBGA413 Shunbun", "Automatic Steel", "40mm", 6600], ["SLGH005 White Birch", "Automatic Steel", "40mm", 9100], ["SBGC253 Chronograph", "Sport Chronographs", "44.5mm", 11800], ["SLGA009 White Birch", "Automatic Steel", "40mm", 9100], ["SBGE285 Mist Flake GMT", "Automatic Steel", "41mm", 8400], ["SBGM221 GMT", "Gold Dress Watches", "39.5mm", 4600], ["SBGX261 Quartz", "Automatic Steel", "37mm", 2200], ["SLGH017 Night Birch", "Automatic Steel", "40mm", 10400], ["SBGA415 Winter", "Automatic Steel", "40mm", 6600], ["SBGA407 Skyflake", "Gold Dress Watches", "40.2mm", 5800], ["SLGA021 Lake Suwa", "Automatic Steel", "40mm", 9100], ["SBGJ237 Hi-Beat GMT", "Automatic Steel", "44.2mm", 6800], ["SBGW289 Sakura", "Gold Dress Watches", "36.5mm", 5400], ["SLGC001 Tentagraph", "Sport Chronographs", "43.2mm", 13700]] },
+      { brand: "Tudor", models: [["Black Bay 58", "Automatic Steel", "39mm", 4300], ["Black Bay 54", "Automatic Steel", "37mm", 4050], ["Black Bay Chrono", "Sport Chronographs", "41mm", 5675], ["Pelagos 39", "Automatic Steel", "39mm", 4900], ["Pelagos FXD", "Automatic Steel", "42mm", 4150], ["Ranger", "Automatic Steel", "39mm", 3300], ["Royal", "Automatic Steel", "41mm", 2700], ["1926", "Gold Dress Watches", "39mm", 2050], ["Black Bay GMT", "Automatic Steel", "41mm", 4550], ["Black Bay Pro", "Automatic Steel", "39mm", 4300], ["Pelagos LHD", "Automatic Steel", "42mm", 5025], ["Black Bay Bronze", "Gold Dress Watches", "43mm", 4725], ["Clair de Rose", "Gold Dress Watches", "34mm", 2475], ["Black Bay 31", "Automatic Steel", "31mm", 3975], ["Heritage Chrono", "Sport Chronographs", "42mm", 4450], ["North Flag", "Automatic Steel", "40mm", 4200], ["Black Bay Ceramic", "Ceramic Limited Editions", "41mm", 5200]] },
+      { brand: "Chopard", models: [["Alpine Eagle Large", "Automatic Steel", "41mm", 14800], ["Mille Miglia Classic Chronograph", "Sport Chronographs", "40.5mm", 8200], ["L.U.C XPS", "Gold Dress Watches", "40mm", 24700], ["L.U.C 1860", "Gold Dress Watches", "36.5mm", 27500], ["Happy Sport", "Gold Dress Watches", "33mm", 9400], ["Imperiale Automatic", "Gold Dress Watches", "36mm", 8500], ["Alpine Eagle Chrono XL", "Sport Chronographs", "44mm", 21600], ["L.U.C GMT One", "Gold Dress Watches", "42mm", 36500], ["L.U.C Full Strike", "Gold Dress Watches", "42.5mm", 270000], ["Mille Miglia GTS", "Automatic Steel", "43mm", 7200], ["L.U.C Quattro", "Gold Dress Watches", "43mm", 27700], ["Alpine Eagle Cadence", "Automatic Steel", "41mm", 24200], ["Happy Diamonds Icons", "Gold Dress Watches", "30mm", 7200], ["L.U.C Perpetual Twin", "Gold Dress Watches", "43mm", 42000], ["Mille Miglia Race Edition", "Sport Chronographs", "44mm", 9100], ["Alpine Eagle 36", "Automatic Steel", "36mm", 10500], ["L.U.C Chrono One", "Sport Chronographs", "42mm", 31000]] },
+      { brand: "Piaget", models: [["Altiplano Automatic", "Gold Dress Watches", "38mm", 26900], ["Polo Date", "Automatic Steel", "42mm", 12200], ["Polo Chronograph", "Sport Chronographs", "42mm", 17700], ["Altiplano Ultimate", "Gold Dress Watches", "41mm", 30000], ["Limelight Gala", "Gold Dress Watches", "32mm", 21500], ["Possession Watch", "Gold Dress Watches", "29mm", 7600], ["Polo Skeleton", "Automatic Steel", "42mm", 32000], ["Altiplano Moonphase", "Gold Dress Watches", "40mm", 30500], ["Polo Field", "Automatic Steel", "42mm", 12400], ["Altiplano Tourbillon", "Gold Dress Watches", "41mm", 128000], ["Black Tie Vintage", "Gold Dress Watches", "45mm", 39000], ["Emperador Cushion", "Gold Dress Watches", "46.5mm", 58000], ["Polo Date Rose Gold", "Gold Dress Watches", "42mm", 31500], ["Altiplano Origin", "Gold Dress Watches", "35mm", 18400], ["Limelight Gala High Jewelry", "Gold Dress Watches", "32mm", 48000], ["Polo Perpetual Calendar", "Gold Dress Watches", "42mm", 60000], ["Altiplano Chronograph", "Sport Chronographs", "41mm", 29000]] },
+      { brand: "Blancpain", models: [["Fifty Fathoms Bathyscaphe", "Automatic Steel", "43mm", 12500], ["Fifty Fathoms Automatique", "Automatic Steel", "45mm", 16400], ["Air Command Flyback", "Sport Chronographs", "42.5mm", 18800], ["Villeret Ultra-Slim", "Gold Dress Watches", "40mm", 11500], ["Villeret Complete Calendar", "Gold Dress Watches", "40mm", 15100], ["Fifty Fathoms Chronograph", "Sport Chronographs", "45mm", 20400], ["Bathyscaphe Chronographe", "Sport Chronographs", "43mm", 17700], ["Villeret Quantieme Complet", "Gold Dress Watches", "40mm", 16900], ["Leman Flyback", "Sport Chronographs", "40mm", 9800], ["Fifty Fathoms Tech Gombessa", "Automatic Steel", "47mm", 28900], ["Villeret Carrousel", "Gold Dress Watches", "42mm", 158000], ["Fifty Fathoms No Rad", "Automatic Steel", "40.3mm", 14500], ["Ladybird Colors", "Gold Dress Watches", "34.9mm", 11200], ["Villeret Tourbillon", "Gold Dress Watches", "42mm", 131000], ["Bathyscaphe Quantieme Complet", "Automatic Steel", "43mm", 15400], ["Fifty Fathoms Barakuda", "Automatic Steel", "40mm", 15000], ["Villeret Chronograph", "Sport Chronographs", "40mm", 22500]] },
+      { brand: "Ulysse Nardin", models: [["Marine Torpilleur", "Automatic Steel", "42mm", 8900], ["Diver X Skeleton", "Ceramic Limited Editions", "44mm", 25000], ["Freak X", "Ceramic Limited Editions", "43mm", 28000], ["Blast Skeleton X", "Ceramic Limited Editions", "42mm", 24000], ["Marine Chronometer", "Automatic Steel", "43mm", 11100], ["Diver Chronograph", "Sport Chronographs", "44mm", 13200], ["Executive Dual Time", "Automatic Steel", "43mm", 9200], ["Classico Manufacture", "Gold Dress Watches", "40mm", 10400], ["Marine Mega Yacht", "Gold Dress Watches", "44mm", 310000], ["Freak ONE", "Ceramic Limited Editions", "44mm", 68000], ["Blast Tourbillon", "Ceramic Limited Editions", "45mm", 53000], ["Diver Net", "Automatic Steel", "44mm", 11800], ["Marine Annual Calendar", "Automatic Steel", "43mm", 11000], ["Classico Moonstruck", "Gold Dress Watches", "46mm", 76000], ["Diver Lemon Shark", "Automatic Steel", "42mm", 7600], ["Blast Free Wheel", "Gold Dress Watches", "45mm", 96000], ["Marine Torpilleur Moonphase", "Gold Dress Watches", "42mm", 11000]] },
+      { brand: "Zenith", models: [["Chronomaster Sport", "Sport Chronographs", "41mm", 10400], ["Defy Skyline", "Automatic Steel", "41mm", 8900], ["Pilot Big Date Flyback", "Sport Chronographs", "42.5mm", 11200], ["Elite Classic", "Gold Dress Watches", "40.5mm", 5900], ["Chronomaster Original", "Sport Chronographs", "38mm", 9700], ["Defy Classic Skeleton", "Ceramic Limited Editions", "41mm", 7400], ["Defy Extreme", "Sport Chronographs", "45mm", 18200], ["Pilot Type 20", "Automatic Steel", "40mm", 6500], ["Elite Moonphase", "Gold Dress Watches", "40.5mm", 7600], ["Chronomaster Revival A386", "Sport Chronographs", "38mm", 8700], ["Defy El Primero 21", "Sport Chronographs", "44mm", 13500], ["Captain Central Second", "Gold Dress Watches", "40mm", 5200], ["Chronomaster Open", "Sport Chronographs", "39.5mm", 10200], ["Defy Skyline Skeleton", "Automatic Steel", "41mm", 11200], ["Pilot Automatic", "Automatic Steel", "40mm", 7500], ["Elite 6150", "Gold Dress Watches", "42mm", 7300], ["Defy Zero G", "Ceramic Limited Editions", "46mm", 138000]] },
+      { brand: "Girard-Perregaux", models: [["Laureato 42", "Automatic Steel", "42mm", 14200], ["Laureato Chronograph", "Sport Chronographs", "42mm", 19200], ["1966 Automatic", "Gold Dress Watches", "40mm", 9100], ["Vintage 1945", "Gold Dress Watches", "36.1mm", 10700], ["Laureato Absolute", "Ceramic Limited Editions", "44mm", 14200], ["Bridges Classic", "Gold Dress Watches", "45mm", 64000], ["Laureato Skeleton", "Automatic Steel", "42mm", 36200], ["Cat's Eye", "Gold Dress Watches", "35.4mm", 16000], ["Traveller WW.TC", "Sport Chronographs", "44mm", 14500], ["Laureato 38", "Automatic Steel", "38mm", 12800], ["Laureato Eternity", "Gold Dress Watches", "42mm", 26500], ["Free Bridge", "Automatic Steel", "44mm", 18000], ["Tourbillon Three Bridges", "Gold Dress Watches", "44mm", 150000], ["Laureato Absolute Chronograph", "Sport Chronographs", "44mm", 17200], ["1966 Orion", "Gold Dress Watches", "40mm", 11200], ["Competizione Stradale", "Sport Chronographs", "42mm", 11800], ["Casquette 2.0", "Ceramic Limited Editions", "42.4mm", 4700]] },
+      { brand: "Parmigiani Fleurier", models: [["Tonda PF Micro-Rotor", "Automatic Steel", "40mm", 22800], ["Tonda PF Chronograph", "Sport Chronographs", "42mm", 31500], ["Toric Petite Seconde", "Gold Dress Watches", "40.6mm", 25400], ["Tonda GT", "Automatic Steel", "42mm", 16900], ["Kalpa Hebdomadaire", "Gold Dress Watches", "42.3mm", 22500], ["Tonda PF GMT Rattrapante", "Automatic Steel", "40mm", 28500], ["Tonda PF Skeleton", "Automatic Steel", "40mm", 65000], ["Tonda PF Annual Calendar", "Gold Dress Watches", "42mm", 38500], ["Toric Chronograph", "Sport Chronographs", "40.6mm", 58000], ["Tonda Metrographe", "Sport Chronographs", "40mm", 14500], ["Tonda PF Sport", "Automatic Steel", "41mm", 29500], ["Tonda PF Minute Rattrapante", "Automatic Steel", "40mm", 31000], ["Bugatti Type 390", "Ceramic Limited Editions", "42.2mm", 295000], ["Tonda 1950", "Gold Dress Watches", "39mm", 18000], ["Toric Hemispheres", "Gold Dress Watches", "42.8mm", 28000], ["Tonda PF Hijri Calendar", "Gold Dress Watches", "42mm", 75000], ["Tonda GT Chronograph", "Sport Chronographs", "42mm", 22500]] },
+      { brand: "Franck Muller", models: [["Vanguard", "Ceramic Limited Editions", "44mm", 17600], ["Curvex CX", "Gold Dress Watches", "40mm", 9800], ["Long Island", "Gold Dress Watches", "45mm", 10800], ["Crazy Hours", "Gold Dress Watches", "39.6mm", 16600], ["Master Banker", "Gold Dress Watches", "39mm", 15200], ["Vanguard Chronograph", "Sport Chronographs", "44mm", 19500], ["Cintrée Curvex", "Gold Dress Watches", "35mm", 8900], ["Skafander", "Automatic Steel", "46mm", 10400], ["Casablanca", "Automatic Steel", "39mm", 7200], ["Aeternitas", "Gold Dress Watches", "42mm", 98000], ["Vanguard Yachting", "Sport Chronographs", "44mm", 14700], ["Double Mystery", "Gold Dress Watches", "42mm", 33500], ["Round Skeleton", "Gold Dress Watches", "39mm", 24500], ["Vanguard Gravity", "Ceramic Limited Editions", "53.7mm", 88000], ["Master Square", "Gold Dress Watches", "42mm", 9600], ["Color Dreams", "Gold Dress Watches", "39mm", 11800], ["Vanguard Racing", "Sport Chronographs", "44mm", 15800]] }
+    ];
+
+    let nextWatchId = 47;
+    brandExpansions.forEach(({ brand, models }) => {
+      models.forEach(([model, category, size, originalPrice], index) => {
+        watches.push({
+          id: nextWatchId,
+          brand,
+          model: `${brand} ${model}`,
+          category,
+          size,
+          originalPrice,
+          price: Math.max(0, originalPrice - 5000),
+          image: `https://source.unsplash.com/900x900/?${encodeURIComponent(`${brand} ${model} luxury watch`)}&sig=${nextWatchId + index}`
+        });
+        nextWatchId += 1;
+      });
+    });
+
+    const cartierImages = [
+      "cartier/cartier-santos-large-model-automatic-blue-dial-mens-watch-wssa0071.jpg",
+      "cartier/cartier-santos-large-model-automatic-black-dial-mens-watch-wssa0096.jpg",
+      "cartier/cartier-santos-large-model-automatic-grey-dial-mens-watch-wssa0037 (1).jpg",
+      "cartier/cartier-ballon-bleu-automatic-pink-dial-ladies-watch-wsbb0068.jpg",
+      "cartier/preowned-cartier-ballon-bleu-silver-dial-18kt-rose-gold-ladies-watch-w6900256_1.jpg",
+      "cartier/cartier-pantheremedium-model-diamond-silver-dial-ladies-watch-w3pn0015.jpg",
+      "cartier/ad6qSZ1ZCF7ETMZF_breitling_0414.jpg"
+    ];
+
+    watches
+      .filter((watch) => watch.brand === "Cartier" && watch.model !== "Santos de Cartier")
+      .slice(0, cartierImages.length)
+      .forEach((watch, index) => {
+        watch.image = cartierImages[index];
+      });
+
+    const localBrandImages = {
+      "Audemars Piguet": [
+        "audemars/audemars-piguet-code-1159-chronograph-black-dial-mens-watch-26393bcooa002cr01-26393bcooa002cr01.jpg",
+        "audemars/preowned-audemars-piguet-code-1159-chronograph-automatic-blue-dial-mens-watch-26393bcooa002kb01-26393bcooa002kb01.jpg",
+        "audemars/preowned-audemars-piguet-millenary-diamond-white-mother-of-pearl-dial-ladies-watch-77247bc-zz-a813cr-01-77247bczza813cr01_2.jpg",
+        "audemars/preowned-audemars-piguet-millenary-gary-kasparov-black-dial-mens-watch-25914ba-oo-1136ba-01-25914baoo1136ba01.jpg",
+        "audemars/preowned-audemars-piguet-royal-oak-automatic-blue-dial-mens-watch-14790st-oo-0789st-01-14790stoo0789st01.jpg",
+        "audemars/preowned-audemars-piguet-royal-oak-automatic-diamond-black-dial-mens-watch-26125st-zz-d002cr-01-26125stzzd002cr01.jpg",
+        "audemars/preowned-audemars-piguet-royal-oak-automatic-mens-watch-14789ba.jpg",
+        "audemars/preowned-audemars-piguet-royal-oak-chronograph-diamond-diamond-pave-dial-mens-watch-26067bczzd002cr01-26067bczzd002cr01.jpg",
+        "audemars/preowned-audemars-piguet-royal-oak-frosted-gold-black-with-grande-tapisserie-pattern-dial-ladies-watch-15454bcgg1259bc03-15454bcgg1259bc03_1.jpg",
+        "audemars/preowned-audemars-piguet-royal-oak-offshore-chronograph-champagne-dial-mens-watch-26470or-oo-a002cr-01-26470orooa002cr01.jpg",
+        "audemars/preowned-audemars-piguet-royal-oak-offshore-chronograph-grey-dial-mens-watch-26175stood003cu01-26175stood003cu01 (1).jpg",
+        "audemars/preowned-audemars-piguet-royal-oak-offshore-chronograph-grey-dial-mens-watch-26175stood003cu01-26175stood003cu01.jpg",
+        "audemars/preowned-audemars-piguet-royal-oak-offshore-chronograph-silver-waffle-design-dial-mens-watch-26170stood091cr01-26170stood091cr01_4 (1).jpg",
+        "audemars/preowned-audemars-piguet-royal-oak-offshore-chronograph-silver-waffle-design-dial-mens-watch-26170stood091cr01-26170stood091cr01_4.jpg",
+        "audemars/preowned-audemars-piguet-royal-oak-offshore-grand-prix-chronograph-black-dial-mens-watch-26290ioooa001ve01-26290ioooa001ve01.jpg",
+        "audemars/preowned-audemars-piguet-royal-oak-quartz-grey-dial-ladies-watch-56175st-oo-0789st-07-56175stoo0789st07.jpg",
+        "audemars/preowned-audemars-piguet-tourbillon-concept-gmt-black-dial-mens-watch-26589ioood002ca01-26589ioood002ca01.jpg"
+      ],
+      "Patek Philippe": [
+        "patek/patek-philippe-calatrava-hand-wind-grey-dial-mens-watch-6119g001.jpg",
+        "patek/patek-philippe-calatrava-pilot-travel-time-18kt-white-gold-automatic-mens-watch-5524g001.jpg",
+        "patek/patek-philippe-complications-worldtime-automatic-mens-watch-5330g001.jpg",
+        "patek/preowned-patek-philippe-calatrava-automatic-silver-dial-mens-watch-5127j0001.jpg",
+        "patek/preowned-patek-philippe-calatrava-automatic-silver-dial-unisex-watch-5565a.jpg",
+        "patek/preowned-patek-philippe-calatrava-ivory-dial-18kt-yellow-gold-brown-leather-mens-watch-5227j001.jpg",
+        "patek/preowned-patek-philippe-calatrava-pilot-travel-time-18kt-white-gold-automatic-mens-watch-5524g001.jpg",
+        "patek/preowned-patek-philippe-calatrava-silvery-opaline-dial-mens-watch-5212a001.jpg",
+        "patek/preowned-patek-philippe-complications-automatic-grey-dial-mens-watch-53961g001-53961g001.jpg",
+        "patek/preowned-patek-philippe-complications-gmt-brown-and-ivory-dial-ladies-watch-7130g001.jpg",
+        "patek/preowned-patek-philippe-complications-gold-dial-mens-watch-5146j001_6.jpg",
+        "patek/preowned-patek-philippe-complications-ivory-dial-mens-watch-51461j001-51461j001.jpg",
+        "patek/preowned-patek-philippe-complications-world-time-gmt-bogota-edition-1-of-10-5230g011.jpg",
+        "patek/preowned-patek-philippe-golden-ellipse-quartz-blue-dial-mens-watch-3747.jpg",
+        "patek/preowned-patek-philippe-gondolo-ivory-dial-mens-watch-5109j.jpg",
+        "patek/preowned-patek-philippe-grand-complications-chronograph-silver-dial-stainless-steel-mens-watch-59601a-59601a001_1.jpg",
+        "patek/preowned-patek-philippe-nautilus-automatic-blue-dial-mens-watch-57261a014.jpg",
+        "patek/preowned-patek-philippe-neptune-quartz-diamond-ladies-watch-4881110g-4881110g.jpg"
+      ],
+      "Richard Mille": [
+        "richard mille/richard-mille-030-automatic-blue-dial-mens-watch-030.jpg",
+        "richard mille/richard-mille-automatic-men_s-rubber-watch-rm028_2.jpg",
+        "richard mille/richard-mille-chronograph-automatic-men_s-watch-rm11.jpg",
+        "richard mille/richard-mille-chronograph-men_s-watch-rm11-badminton.jpg",
+        "richard mille/richard-mille-hand-wind-men_s-watch-rm61-01_2.jpg",
+        "richard mille/richard-mille-les-voiles-de-st-barth-chronograph-automatic-mens-watch-rm-60-01-st-barth_2.jpg",
+        "richard mille/richard-mille-manual-winding-tourbillon-worldtimer-hand-wind-mens-watch-rm5801.jpg",
+        "richard mille/richard-mille-richard-mille-chronograph-automatic-mens-watch-rm-11-03-rg.jpg",
+        "richard mille/richard-mille-rm-037-automatic-silver-dial-ladies-watch-rm037-ao-wg.jpg",
+        "richard mille/richard-mille-rm-055-bubba-watson-hand-wind-mens-watch-rm055-white (1).jpg",
+        "richard mille/richard-mille-rm-055-bubba-watson-hand-wind-mens-watch-rm055-white.jpg",
+        "richard mille/richard-mille-rm-11-01-flyback-chronograph-roberto-mancini-automatic-black-dial-mens-watch-rm11-01_2.jpg",
+        "richard mille/richard-mille-rm-1103-mclaren-transparent-dial-unisex-watch-rm-1103-mclaren.jpg",
+        "richard mille/richard-mille-rm029-automatic-black-dial-watch-rm029rg.jpg",
+        "richard mille/richard-mille-rm0701-medium-set-automatic-diamond-ladies-watch.jpg",
+        "richard mille/richard-mille-rm1103-transparent-dial-unisex-watch-rm1103.jpg",
+        "richard mille/richard-mille-rm1601-automatic-black-dial-ladies-watch.jpg",
+        "richard mille/richard-mille-rm3901-chronograph-automatic-black-dial-mens-watch.jpg"
+      ],
+      "Vacheron Constantin": [
+        "vacheron constatin/preowned-vacheron-constantin-ladies-overseas-quartz-diamond-ladies-watch-16550423a8881-16550423a8881_2_1.jpg",
+        "vacheron constatin/preowned-vacheron-constantin-overseas-chronograph-silver-dial-mens-watch-49150b01a9095-49150b01a9095.jpg",
+        "vacheron constatin/preowned-vacheron-constantin-royal-eagle-automatic-white-dial-mens-watch-42008000j9061-42008000j9061.jpg",
+        "vacheron constatin/preowned-vacheron-constantin-vintage-hand-wind-white-dial-mens-watch-39015_2.jpg",
+        "vacheron constatin/vacheron-constantin-1972-cambree-silvered-dial-ladies-watch-25515000r9254-25515000r9254.jpg",
+        "vacheron constatin/vacheron-constantin-harmony-dual-time-silvered-opaline-dial-mens-watch-7810s000rb051-7810s000rb051.jpg",
+        "vacheron constatin/vacheron-constantin-historiques-american-18kt-rose-gold-mens-watch-82035000r9359.jpg",
+        "vacheron constatin/vacheron-constantin-malte-silver-dial-18k-rose-gold-diamond-ladies-watch-25530000r-9742.jpg",
+        "vacheron constatin/vacheron-constantin-malte-small-seconds-18kt-pink-gold-mens-watch-82230000r9963-82230000r9963.jpg",
+        "vacheron constatin/vacheron-constantin-malte-tourbillon-18kt-rose-gold-brown-leather-mens-watch-30130000r9754-30130000r9754.jpg",
+        "vacheron constatin/vacheron-constantin-overseas-automatic-black-dial-mens-watch-7900v110ab546-7900v110ab546.jpg",
+        "vacheron constatin/vacheron-constantin-overseas-quartz-diamond-black-dial-ladies-watch-1205v100ab591-1205v100ab591.jpg",
+        "vacheron constatin/vacheron-constantin-overseas-quartz-diamond-blue-dial-ladies-watch-1205v100ab590-1205v100ab590_2.jpg",
+        "vacheron constatin/vacheron-constantin-overseas-tourbillon-automatic-blue-dial-mens-watch-6000v110rb733-6000v110rb733.jpg",
+        "vacheron constatin/vacheron-constantin-patrimony-contemporaine-silver-dial-white-gold-ladies-watch-85515ca1g9841-85515ca1g9841 (1).jpg",
+        "vacheron constatin/vacheron-constantin-patrimony-contemporaine-silver-dial-white-gold-ladies-watch-85515ca1g9841-85515ca1g9841.jpg",
+        "vacheron constatin/vacheron-constantin-patrimony-perpetual-calendar-pink-gold-mens-watch-43175000r9687.jpg",
+        "vacheron constatin/vacheron-constantin-patrimony-platinum-mens-watch-81180000p9539-81180000p9539.jpg"
+      ],
+      "Omega": [
+        "omega/omega-de-ville-automatic-unisex-watch-42410372004001-42410372004001.jpg",
+        "omega/omega-de-ville-blue-dial-ladies-watch-428.18.36.60.03.001_2.jpg",
+        "omega/omega-de-ville-hour-vision-blue-dial-automatic-mens-watch-43333412203001-43333412203001_2.jpg",
+        "omega/omega-de-ville-ladymatic-automatic-chronometer-ladies-watch-42560342055004-42560342055004.jpg",
+        "omega/omega-de-ville-prestige-coaxial-blue-dial-mens-watch-42420372003001-42420372003001.jpg",
+        "omega/omega-prestige-coaxial-automatic-silver-dial-unisex-watch-42410372002001-42410372002001.jpg",
+        "omega/omega-seamaster-300-automatic-blue-dial-men_s-watch-233.62.41.21.03.001_2.jpg",
+        "omega/omega-seamaster-300-black-dial-brown-leather-mens-watch-23322412101002-23322412101002.jpg",
+        "omega/omega-seamaster-300m-007-edition-no-time-to-die-automatic-chronometer-brown-dial-mens-watch-21090422001001-21090422001001.jpg",
+        "omega/omega-seamaster-aqua-terra-automatic-blue-dial-men_s-watch-220.10.38.20.03.001.jpg",
+        "omega/omega-seamaster-aqua-terra-automatic-chronometer-watch-220.10.38.20.01.001_2.jpg",
+        "omega/omega-seamaster-automatic-black-dial-men_s-watch-210.32.42.20.01.001.jpg",
+        "omega/omega-seamaster-automatic-blue-dial-mens-watch-21032422003001-21032422003001_1 (1).jpg",
+        "omega/omega-seamaster-automatic-blue-dial-mens-watch-21032422003001-21032422003001_1.jpg",
+        "omega/omega-seamaster-automatic-chronometer-black-dial-mens-watch-22010412101002-22010412101002_2_1.jpg",
+        "omega/omega-seamaster-automatic-chronometer-green-dial-mens-watch-21090422010001-21090422010001.jpg",
+        "omega/omega-seamaster-automatic-chronometer-grey-dial-mens-watch-21030422006002-21030422006002.jpg",
+        "omega/omega-seamaster-automatic-chronometer-summer-blue-dial-mens-watch-21030422003003-21030422003003.jpg"
+      ],
+      "A. Lange & Sohne": [
+        "A. Lange & Sohne/a-lange-and-sohne-1815-chronograph-silver-dial-18k-rose-gold-mens-watch-402032-402032.jpg",
+        "A. Lange & Sohne/a-lange-and-sohne-1815-silver-dial-18kt-rose-gold-mens-watch-235032-235032_2_1.jpg",
+        "A. Lange & Sohne/a-lange-and-sohne-1815-tourbillon-silver-dial-18k-rose-gold-mens-watch-730032-730032_1.jpg",
+        "A. Lange & Sohne/a-lange-and-sohne-datograph-up-down-black-dial-18k-pink-gold-mens-watch-405031-405031.jpg",
+        "A. Lange & Sohne/a-lange-and-sohne-lange-1-champagne-dial-18kt-yellow-gold-mens-watch-101021-101021.jpg",
+        "A. Lange & Sohne/a-lange-and-sohne-moonphase-silver-dial-mens-18kt-rose-gold-watch-109032-109032_1.jpg",
+        "A. Lange & Sohne/a-lange-and-sohne-saxonia-automatic-silver-dial-mens-watch-380032-380032_4.jpg",
+        "A. Lange & Sohne/a-lange-and-sohne-saxonia-dual-time-silver-dial-18k-white-gold-mens-watch-386026-386026.jpg",
+        "A. Lange & Sohne/a-lange-and-sohne-silver-dial-18kt-white-gold-black-leather-mens-watch-116039-116039.jpg",
+        "A. Lange & Sohne/a-lange-sohne-grand-lange-1-moonphase-silver-dial-mens-watch-139025-139025.jpg",
+        "A. Lange & Sohne/a-lange-sohne-grand-saxonia-automatik-black-dial-mens-watch-307029-307029.jpg",
+        "A. Lange & Sohne/a-lange-sohne-lange-1-moonphase-18kt-rose-gold-automatic-watch-alange192032-192032.jpg",
+        "A. Lange & Sohne/a-lange-sohne-saxonia-automatic-watch-alange385032-385032.jpg",
+        "A. Lange & Sohne/a-lange-sohne-saxonia-dual-time-automatic-silver-dial-mens-watch-385026-385026_1.jpg",
+        "A. Lange & Sohne/a-lange-sohne-saxonia-thin-silver-dial-mens-watch-211026-211026.jpg",
+        "A. Lange & Sohne/a.-lange-_-sohne-1815-white-dial-unisex-watch-alange234047.jpg",
+        "A. Lange & Sohne/a.-lange-_-sohne-saxonia-automatic-white-dial-watch-alange842032.jpg",
+        "A. Lange & Sohne/preowned-a-lange-sohne-lange-1-time-zone-gmt-offset-home-time-silver-dial-mens-watch-116032-116032_2_1.jpg"
+      ],
+      "Jaeger-LeCoultre": [
+        "Jaeger-LeCoultre/jaeger-lecoultre-master-ultra-thin-automatic-blue-dial-mens-watch-q1368480.jpg",
+        "Jaeger-LeCoultre/jaeger-lecoultre-master-ultra-thin-automatic-mens-watch-q1232510.jpg",
+        "Jaeger-LeCoultre/jaeger-lecoultre-polaris-chronograph-automatic-mens-watch-q902843j_1.jpg",
+        "Jaeger-LeCoultre/jaeger-lecoultre-rendezvous-night-day-small-automatic-ladies-diamond-watch-q3468480.jpg",
+        "Jaeger-LeCoultre/jaeger-lecoultre-reverso-classic-medium-duetto-hand-wind-ladies-watch-q2588422.jpg",
+        "Jaeger-LeCoultre/jaeger-lecoultre-reverso-tribute-hand-wind-white-dial-mens-watch-q3918420_1.jpg",
+        "Jaeger-LeCoultre/jaeger-lecoultre-ultra-thin-reserve-de-marche-automatic-men_s-watch-q1378420.jpg",
+        "Jaeger-LeCoultre/jaegerlecoultre-master-ultra-thin-moon-automatic-mens-watch-q1368430.jpg",
+        "Jaeger-LeCoultre/jaegerlecoultre-reverso-tribute-monoface-automatic-white-dial-watch-q7168420.jpg",
+        "Jaeger-LeCoultre/preowned-jaeger-lecoultre-master-compressor-chronograph-black-dial-mens-watch-q1768470.jpg",
+        "Jaeger-LeCoultre/preowned-jaeger-lecoultre-master-compressor-chronograph-black-dial-mens-watch-q178t471.jpg",
+        "Jaeger-LeCoultre/preowned-jaeger-lecoultre-master-control-automatic-mens-watch-171290s-62-171290s-62.jpg",
+        "Jaeger-LeCoultre/preowned-jaeger-lecoultre-master-control-automatic-silver-dial-mens-watch-q4018420_1.jpg",
+        "Jaeger-LeCoultre/preowned-jaeger-lecoultre-master-control-beige-dial-mens-watch-q1612520.jpg",
+        "Jaeger-LeCoultre/preowned-jaeger-lecoultre-master-control-memovox-gmt-automatic-grey-dial-mens-watch-146-3-951-1463951.jpg",
+        "Jaeger-LeCoultre/preowned-jaeger-lecoultre-master-grande-ultra-thin-rose-dial-mens-watch-q1352420bk.jpg",
+        "Jaeger-LeCoultre/preowned-jaeger-lecoultre-master-moon-triple-calendar-automatic-white-dial-mens-watch-1411191-1411191.jpg",
+        "Jaeger-LeCoultre/preowned-jaeger-lecoultre-reverso-classic-silver-reverso-dial-ladies-watch-q2668432.jpg"
+      ],
+      "Hublot": [
+        "hublot/hublot-big-bang-automatic-diamond-white-dial-ladies-watch-485se2010rw1604-485se2010rw1604.jpg",
+        "hublot/hublot-big-bang-chronograph-automatic-carbon-fiber-dial-mens-watch-301cm130rx-301cm130rx.jpg",
+        "hublot/hublot-big-bang-integrate-titianium-ceramic-chronograph-automatic-watch-451nm1170nm-451nm1170nm.jpg",
+        "hublot/hublot-big-bang-original-ceramic-chronograph-automatic-mens-watch-301cm710rx-301cm710rx_1.jpg",
+        "hublot/hublot-big-bang-unico-automatic-mens-watch-421om1180rx-421om1180rx.jpg",
+        "hublot/hublot-big-bang-unico-chronograph-automatic-mens-watch-441nm1171rx-441nm1171rx_1.jpg",
+        "hublot/hublot-big-bang-unico-titanium-blue-chronograph-automatic-mens-watch-441nl5171rx-441nl5171rx.jpg",
+        "hublot/hublot-big-bang-unico-titanium-chronograph-automatic-diamond-mens-watch-441nx1171rx1704-441nx1171rx1704_2 (1).jpg",
+        "hublot/hublot-big-bang-unico-titanium-chronograph-automatic-diamond-mens-watch-441nx1171rx1704-441nx1171rx1704_2.jpg",
+        "hublot/hublot-big-bang-unico-yellow-gold-chronograph-automatic-mens-watch-441vx1131rx-441vx1131rx.jpg",
+        "hublot/hublot-classic-fusion-aerofusion-black-magic-chronograph-automatic-mens-watch-528-cm-0170-cm-528cm0170cm.jpg",
+        "hublot/hublot-classic-fusion-automatic-black-dial-watch-565nx1470rx-565nx1470rx.jpg",
+        "hublot/hublot-classic-fusion-automatic-blue-dial-mens-watch-542cm7170rx-542cm7170rx.jpg",
+        "hublot/hublot-classic-fusion-automatic-blue-dial-mens-watch-550es5100rxorl21-550es5100rxorl21.jpg",
+        "hublot/hublot-classic-fusion-automatic-blue-dial-mens-watch-565nx7170rx-565nx7170rx.jpg",
+        "hublot/hublot-classic-fusion-automatic-green-dial-mens-watch-542nx8970rx-542nx8970rx.jpg",
+        "hublot/hublot-classic-fusion-automatic-white-dial-mens-watch-550ns2200rworl20-550ns2200rworl20_1.jpg",
+        "hublot/hublot-spirit-of-big-bang-automatic-black-dial-mens-watch-665cx0660lr-665cx0660lr.jpg"
+      ],
+      "IWC Schaffhausen": [
+        "IWC Schaffhausen/43883950-bv4gdn6t3hy3qbuyk4jnsbx2-Square280.jpg",
+        "IWC Schaffhausen/43883950-o4eyhb3mnf0azj6fnjuacqll-Square280.jpg",
+        "IWC Schaffhausen/44739755-8jizqqj8j7damexohineksa2-Square280.jpg",
+        "IWC Schaffhausen/44739755-9nilarvg03ildy6k83g1y8c9-Square280.jpg",
+        "IWC Schaffhausen/45999410-hi1f53j4qx2btl4l8eqr6is6-Square280.jpg",
+        "IWC Schaffhausen/45999410-p8paimj6d4j10selftqx3c0q-Square280.jpg",
+        "IWC Schaffhausen/45999410-pwabn9kvkhr3ofix0wv2tk2e-Square280.jpg",
+        "IWC Schaffhausen/46469534-d2wiapp7mefkgvh81v72ps31-Square280.jpg",
+        "IWC Schaffhausen/46469534-rx4lf4wn7ey7t7f96kc6j4vc-Square280.jpg",
+        "IWC Schaffhausen/CMF_308-je21j9y7sskp8v12mmqpt21f-Rect250_305.png",
+        "IWC Schaffhausen/CMF_345-1clvacuw9iiqmh0dib8w6hwn-Rect250_305.png",
+        "IWC Schaffhausen/CMF_401-dni9kimdn8kzdagl8c9sixki-Rect250_305.png",
+        "IWC Schaffhausen/CMF_413-kxbe060h9x0ehdknj8n9mkc8-Rect250_305.png",
+        "IWC Schaffhausen/CMF_426-3xgz6sj64h1ncb5740141095-Rect250_305.png",
+        "IWC Schaffhausen/CM_783-pv778tpdx7qw2fpo9j8r4z5d-Rect250_305.png",
+        "IWC Schaffhausen/gr4oqzb5wknz-dx07f93jrrctled14gu9385v-Square280.jpg",
+        "IWC Schaffhausen/iwc-schaffhausen-da-vinci-automatic-silver-dial-watch-iw458309.jpg",
+        "IWC Schaffhausen/KP_3876-ikrwxvrfgn9ifc4mzs0if6kk-Rect250_305.png"
+      ],
+      "Breguet": [
+        "breguet/breguet-classique-hora-mundi-mens-watch-5717breu9zu_2.jpg",
+        "breguet/breguet-marine-automatic-grey-dial-watch-5517tig25zu_1.jpg",
+        "breguet/breguet-marine-chronograph-automatic-blue-dial-mens-watch-5527bby25wv-5527bby25wv.jpg",
+        "breguet/breguet-reine-de-naples-automatic-diamond-ladies-watch-8918br5t964d00d3l-8918br5t964d00d3l_1.jpg",
+        "breguet/breguet-reine-de-naples-automatic-diamond-ladies-watch-8928br5w944dd0d3l-8928br5w944dd0d3l_2.jpg",
+        "breguet/breguet-reine-de-naples-automatic-diamond-ladies-watch-9818bb5v922dd0d-9818bb5v922dd0d.jpg",
+        "breguet/breguet-reine-de-naples-automatic-diamond-white-dial-ladies-watch-8918bb58964d00d3l_2.jpg",
+        "breguet/breguet-reine-de-naples-automatic-diamond-white-dial-ladies-watch-8918br58964d00d3l.jpg",
+        "breguet/breguet-tradition-automatic-skeleton-dial-18-kt-rose-gold-men_s-watch-7057br-g9-9w6.jpg",
+        "breguet/breguet-tradition-gmt-manual-silver-skeleton-dial-mens-watch-7067bb-g1-9w6_1.jpg",
+        "breguet/breguet-tradition-gmt-manual-skeletal-dial-leather-men_s-watch-7067brg19w6.jpg",
+        "breguet/breguet-tradition-skeleton-dial-18kt-white-gold-mens-watch-7057bb119w6-7057bb119w6.jpg",
+        "breguet/breguet-type-20-chronograph-automatic-black-dial-mens-watch-2057st923wu-2057st923wu.jpg",
+        "breguet/preowned-breguet-heritage-automatic-diamond-silver-dial-ladies-watch-8671.jpg",
+        "breguet/preowned-breguet-marine-big-date-automatic-grey-dial-mens-watch-5817.jpg",
+        "breguet/preowned-breguet-marine-chronograph-automatic-silver-dial-mens-watch-3460.jpg",
+        "breguet/preowned-breguet-marine-chronograph-silver-dial-mens-watch-5827bb125zu-5827bb125zu_4.jpg",
+        "breguet/preowned-breguet-tradition-hand-wind-mens-watch-7057bbg99w6-7057bbg99w6.jpg"
+      ],
+      "Panerai": [
+        "Panerai/panerai-chronograph-automatic-black-dial-mens-watch-pam01109.jpg",
+        "Panerai/panerai-luminor-44mm-base-logo-automatic-white-dial-mens-watch-pam01087.jpg",
+        "Panerai/panerai-luminor-automatic-black-dial-mens-watch-pam01372_2.jpg",
+        "Panerai/panerai-luminor-automatic-blue-dial-mens-watch-pam01270.jpg",
+        "Panerai/panerai-luminor-automatic-blue-dial-mens-watch-pam01370_1.jpg",
+        "Panerai/panerai-luminor-blu-mare-hand-wind-blue-dial-mens-watch-pam01085.jpg",
+        "Panerai/panerai-luminor-due-automatic-blue-dial-mens-watch-pam01124.jpg",
+        "Panerai/panerai-luminor-logo-hand-wind-black-dial-mens-watch-pam01084.jpg",
+        "Panerai/panerai-luminor-quaranta-automatic-white-dial-mens-watch-pam01371.jpg",
+        "Panerai/panerai-luminor-quaranta-bitempo-luna-rossa-gmt-automatic-blue-dial-mens-watch-pam01404.jpg",
+        "Panerai/panerai-piccolo-due-automatic-ladies-watch-pam01273.jpg",
+        "Panerai/panerai-radiomir-eilean-hand-wind-brown-dial-watch-pam01243_1.jpg",
+        "Panerai/panerai-radiomir-officine-hand-wind-black-dial-mens-watch-pam01382.jpg",
+        "Panerai/panerai-submersible-automatic-black-dial-mens-watch-pam01683.jpg",
+        "Panerai/panerai-submersible-automatic-blue-dial-mens-watch-pam01289.jpg",
+        "Panerai/panerai-submersible-automatic-quarantaquattro-carbotechtm-blu-abisso-mens-watch-pam01232.jpg",
+        "Panerai/panerai-submersible-quarantaquattro-automatic-white-dial-mens-watch-pam01543.jpg",
+        "Panerai/preowned-preowned-panerai-luminor-base-hand-wind-black-dial-mens-watch-pam00112_2_1.jpg"
+      ],
+      "Breitling": [
+        "Breitling/breitling-avenger-42-automatic-black-dial-mens-watch-a17328101b1a1.jpg",
+        "Breitling/breitling-avenger-42-automatic-blue-dial-mens-watch-a17328101c1a1.jpg",
+        "Breitling/breitling-avenger-42-chronograph-automatic-chronometer-black-dial-mens-watch-ab0146101b1x1.jpg",
+        "Breitling/breitling-avenger-42-chronograph-automatic-chronometer-blue-dial-mens-watch-ab0146101c1a1.jpg",
+        "Breitling/breitling-avenger-42-chronograph-automatic-chronometer-blue-dial-mens-watch-ab0146101c1x1.jpg",
+        "Breitling/breitling-avenger-42-chronograph-automatic-chronometer-green-dial-mens-watch-ab0146101l1a1_2.jpg",
+        "Breitling/breitling-avenger-42mm-chronograph-automatic-green-dial-mens-watch-ab0146101l1x1.jpg",
+        "Breitling/breitling-avenger-automatic-black-dial-mens-watch-a17328101b1x1_1.jpg",
+        "Breitling/breitling-avenger-automatic-green-dial-mens-watch-a17328101l1a1.jpg",
+        "Breitling/breitling-avenger-b01-42mm-chronograph-automatic-black-dial-mens-watch-ab0146101b1a1.jpg",
+        "Breitling/breitling-avenger-chronograph-automatic-green-dial-mens-watch-ab0147101l1x1.jpg",
+        "Breitling/breitling-avenger-chronograph-automatic-mens-watch-sb0147101i1x1.jpg",
+        "Breitling/breitling-endurance-chronograph-quartz-black-dial-unisex-watch-x83310a71b1s1.jpg",
+        "Breitling/breitling-endurance-chronograph-quartz-black-dial-unisex-watch-x83310d41b1s1.jpg",
+        "Breitling/breitling-endurance-pro-chronograph-quartz-chronometer-red-dial-mens-watch-x823109a1k1s1.jpg",
+        "Breitling/breitling-navitimer-automatic-chronometer-green-dial-unisex-watch-a17395361l1a1.jpg",
+        "Breitling/breitling-superocean-automatic-chronometer-green-dial-mens-watch-a17376a31l1s1_1.jpg",
+        "Breitling/breitling-superocean-heritage-ii-chronograph-automatic-black-dial-mens-watch-a13313121b1a1.jpg"
+      ],
+      "Tudor": [
+        "Tudor/42646484-tv9ukyd9v6wkoyigwl85gi2i-Square280.jpg",
+        "Tudor/CMF_363-kc259x717ihvm0d03e0e3qeu-Rect250_305.png",
+        "Tudor/CMF_463-5tmlvfh0zhud509jcb2hh275-Rect250_305.png",
+        "Tudor/CM_1007-kb2nh5nefhhscahkel8b3epo-Rect250_305.png",
+        "Tudor/CM_1017-gli6spbpq5oyopoypbrg42fe-Rect250_305.png",
+        "Tudor/CM_1091-crcmzag4njldgw6t2jt6bq48-Rect250_305.png",
+        "Tudor/CM_671-lkasadixabklat18z7gcvpru-Rect250_305.png",
+        "Tudor/CM_909-9w8zr65cd1yi6hisopz6y13z-Rect250_305.png",
+        "Tudor/f2h3m6ewq5u3-fq49m0t14ogwa8knjfp2jkvy-Square280.jpg",
+        "Tudor/KP_3847-s1bemsg2st3608551tr0k8qs-Rect250_305.png",
+        "Tudor/tudor-1926-automatic-41-mm-opaline-dial-mens-watch-m916500005.jpg",
+        "Tudor/tudor-black-bay-58-gmt-coke-automatic-black-dial-mens-watch-m7939g1a0nru0001.jpg",
+        "Tudor/tudor-black-bay-68-hand-wind-chronometer-blue-dial-mens-watch-m7943a1a0nu0001.jpg",
+        "Tudor/tudor-black-bay-blue-dial-mens-watch-m790000001_2.jpg",
+        "Tudor/tudor-black-bay-fifty-eight-automatic-chronometer-brown-dial-mens-watch-m79012m0001.jpg",
+        "Tudor/tudor-heritage-automatic-41-mm-black-dial-mens-watch-m79733n0008.jpg",
+        "Tudor/tudor-pelagos-automatic-chronometer-black-dial-mens-watch-m2543c1a7nu0001.jpg",
+        "Tudor/tudor-ranger-36-automatic-black-dial-watch-m799300001.jpg"
+      ],
+      "TAG Heuer": [
+        "TAG Heuer/tag-heuer-43mm-formula-1-red-chronograph-quartz-red-dial-mens-watch-caz101anba0842-caz101anba0842.jpg",
+        "TAG Heuer/tag-heuer-aquaracer-automatic-black-dial-mens-watch-wbp2110ba0627-wbp2110ba0627.jpg",
+        "TAG Heuer/tag-heuer-aquaracer-professional-200-solargraph-blue-dial-mens-watch-wbp1113ba0000-wbp1113ba0000.jpg",
+        "TAG Heuer/tag-heuer-carrera-automatic-grey-dial-mens-watch-wbn2111ba0639.jpg",
+        "TAG Heuer/tag-heuer-carrera-chronograph-automatic-green-dial-mens-watch-cbs2211fc6545-cbs2211fc6545_1.jpg",
+        "TAG Heuer/tag-heuer-carrera-date-automatic-diamond-ladies-watch-wbn2317ba0001-wbn2317ba0001_1.jpg",
+        "TAG Heuer/tag-heuer-carrera-daydate-automatic-blue-dial-watch-wda2112ba0043-wda2112ba0043.jpg",
+        "TAG Heuer/tag-heuer-formula-1-black-dial-mens-watch-waz1110ba0875.jpg",
+        "TAG Heuer/tag-heuer-formula-1-black-dial-mens-watch-waz1112ba0875-waz1112ba0875.jpg",
+        "TAG Heuer/tag-heuer-formula-1-blue-dial-mens-watch-waz1010ba0842-waz1010ba0842.jpg",
+        "TAG Heuer/tag-heuer-formula-1-blue-sunray-dial-chronograph-men_s-watch-caz101k.ba0842.jpg",
+        "TAG Heuer/tag-heuer-formula-1-chronograph-black-dial-black-leather-men_s-watch-caz1010.ft8024.jpg",
+        "TAG Heuer/tag-heuer-formula-1-chronograph-blue-dial-mens-watch-caz1014ba0842-caz1014ba0842.jpg",
+        "TAG Heuer/tag-heuer-formula-1-chronograph-blue-dial-mens-watch-caz1014ba0842-caz1014ba0842_2.jpg",
+        "TAG Heuer/tag-heuer-formula-1-chronograph-quartz-blue-dial-mens-watch-caz101avft8077-caz101avft8077.jpg",
+        "TAG Heuer/tag-heuer-formula-1-red-bull-racing-special-edition-chronograph-quartz-blue-dial-mens-watch-caz101alft8052-caz101alft8052.jpg",
+        "TAG Heuer/tag-heuer-formula-1-solargraph-blue-dial-mens-watch-wby1112ba0042-wby1112ba0042.jpg",
+        "TAG Heuer/tag-heuer-monaco-chronograph-automatic-blue-sunray-dial-mens-watch-cbl2111fc6453-cbl2111fc6453.jpg"
+      ],
+      "Grand Seiko": [
+        "Grand Seiko/CM_1766-oezdg2odh484edn5m6zht1kr-Rect250_305.png",
+        "Grand Seiko/CM_3164-n76m19rme7v9vsuijnwptz0x-Rect250_305.png",
+        "Grand Seiko/grand-seiko-evolution-9-automatic-black-dial-mens-watch-slgh017_2.jpg",
+        "Grand Seiko/grand-seiko-evolution-9-automatic-silver-dial-mens-watch-slgh005g.jpg",
+        "Grand Seiko/grand-seiko-evolution-9-hibeat-chronograph-automatic-blue-dial-mens-watch-slgc001.jpg",
+        "Grand Seiko/grand-seiko-heritage-automatic-blue-dial-ladies-watch-sbgw299g_2.jpg",
+        "Grand Seiko/grand-seiko-heritage-automatic-blue-dial-mens-watch-slgh009.jpg",
+        "Grand Seiko/grand-seiko-heritage-automatic-mens-watch-slgh013g_1.jpg",
+        "Grand Seiko/grand-seiko-heritage-hand-wind-brown-dial-unisex-watch-sbgw293.jpg",
+        "Grand Seiko/grand-seiko-heritage-rikka-automatic-green-dial-mens-watch-sbgh351g.jpg",
+        "Grand Seiko/grand-seiko-heritage-sakurakakushi-automatic-pink-dial-ladies-watch-sbgh341g.jpg",
+        "Grand Seiko/grand-seiko-heritage-sakurawakaba-automatic-mens-watch-sbgh343g.jpg",
+        "Grand Seiko/grand-seiko-sport-gmt-automatic-blue-dial-mens-watch-sbgj237g.jpg",
+        "Grand Seiko/preowned-grand-seiko-heritage-automatic-black-dial-mens-watch-sbge211.jpg",
+        "Grand Seiko/preowned-grand-seiko-heritage-collection-automatic-white-dial-mens-watch-sbgh311g.jpg",
+        "Grand Seiko/preowned-grand-seiko-sport-automatic-green-dial-mens-watch-sbge295.jpg",
+        "Grand Seiko/preowned-grand-seiko-sport-hibeat-automatic-black-dial-mens-watch-sbgh289g.jpg",
+        "Grand Seiko/qqu44p10w2wf-1dvzyu9qzpm9j72w7ddkcq8r-Square280.jpg"
+      ],
+      "Chopard": [
+        "Chopard/44753442-s4i6xr8rnucps45aaz25fgm8-Square280.jpg",
+        "Chopard/46074396-w4rhebyn649k93zvlhavsfgp-Square280.jpg",
+        "Chopard/46149219-ejxni2qaod3idjvno9jzc33b-Square280.jpg",
+        "Chopard/4p3yn5fg9zba-7tgjwjoyv7r5fol9hmvtgifs-Square280.jpg",
+        "Chopard/ahxgxsf9wuan-0tnjhwhg55q68itf8fwgrw01-Square280.jpg",
+        "Chopard/chopard-alpine-eagle-automatic-chronometer-grey-dial-mens-watch-298600-6001.jpg",
+        "Chopard/chopard-classic-18k-rose-gold-diamond-bezel-mens-watch-1712785004_1.jpg",
+        "Chopard/chopard-happy-sport-automatic-chronometer-silver-dial-ladies-watch-275378-5001_1.jpg",
+        "Chopard/chopard-happy-sport-automatic-silver-dial-ladies-watch-2785733011.jpg",
+        "Chopard/chopard-happy-sport-automatic-silver-dial-mens-watch-2785726009.jpg",
+        "Chopard/chopard-happy-sport-white-dial-chronograph-diamond-ladies-watch-2885062001-2885062001.jpg",
+        "Chopard/chopard-imperiale-diamond-automatic-40mm-ladies-watch-3885313004.jpg",
+        "Chopard/chopard-luc-lunar-one-silver-and-black-dial-automatic-mens-watch-1618949001.jpg",
+        "Chopard/chopard-luc-xps-automatic-chronometer-diamond-gray-dial-ladies-watch-1719485001.jpg",
+        "Chopard/chopard-mille-miglia-chronograph-automatic-green-dial-mens-watch-168619-3004_1.jpg",
+        "Chopard/chopard-mille-miglia-chronograph-automatic-red-dial-mens-watch-1686193003_2.jpg",
+        "Chopard/CM_2116-xpugwjnjxb3vn0xdwuca4y85-Rect250_305.png",
+        "Chopard/preowned-chopard-alpine-eagle-automatic-blue-dial-ladies-watch-2986013001.jpg"
+      ],
+      "Piaget": [
+        "Piaget/piaget-altiplano-automatic-silver-dial-mens-watch-g0a38130-g0a38130grn.jpg",
+        "Piaget/piaget-altiplano-automatic-white-dial-ladies-watch-g0a40109.jpg",
+        "Piaget/piaget-altiplano-hand-wind-diamond-black-dial-watch-g0a38085.jpg",
+        "Piaget/piaget-altiplano-silver-dial-grey-alligator-leather-ladies-watch-goa39106-g0a39106.jpg",
+        "Piaget/piaget-altiplano-silvered-dial-18k-white-gold-diamond-automatic-mens-wach-goa39138-g0a39138_2.jpg",
+        "Piaget/piaget-altiplano-white-dial-18k-rose-gold-diamond-ladies-watch-goa39107-g0a39107.jpg",
+        "Piaget/piaget-limelight-magic-hour-silver-dial-18kt-white-gold-diamond-black-satin-ladies-watch-g0a32099.jpg",
+        "Piaget/piaget-limelight-stella-automatic-diamond-white-dial-ladies-watch-g0a40123.jpg",
+        "Piaget/piaget-polo-automatic-black-dial-mens-watch-g0a47014.jpg",
+        "Piaget/piaget-polo-chronograph-automatic-green-dial-mens-watch-g0a49024.jpg",
+        "Piaget/piaget-polo-chronograph-automatic-silver-dial-mens-watch-g0a46013_1.jpg",
+        "Piaget/piaget-polo-s-automatic-blue-dial-men_s-watch-g0a41002.jpg",
+        "Piaget/piaget-polo-s-chronograph-automatic-blue-dial-mens-watch-g0a43002.jpg",
+        "Piaget/piaget-possession-quartz-diamond-silver-dial-ladies-watch-g0a44284.jpg",
+        "Piaget/piaget-traditional-silver-dial-18k-white-gold-ladies-watch-goa37045-g0a37045.jpg",
+        "Piaget/piaget-traditional-silvered-dial-ladies-watch-g0a37046.jpg",
+        "Piaget/preowned-piaget-altiplano-hand-wind-white-dial-ladies-watch-g0a39105.jpg",
+        "Piaget/preowned-piaget-altiplano-hand-wind-white-dial-mens-watch-g0a29112.jpg"
+      ],
+      "Blancpain": [
+        "Blancpain/blancpain-air-command-chronograph-automatic-blue-dial-mens-watch-ac02-12b40-63b.jpg",
+        "Blancpain/blancpain-fifty-fathoms-automatic-blue-dial-men_s-watch-5015-12b40-o52a.jpg",
+        "Blancpain/blancpain-fifty-fathoms-automatic-grey-dial-mens-watch-5000-1210-g52a.jpg",
+        "Blancpain/blancpain-fifty-fathoms-automatique-black-dial-mens-watch-5015113052a.jpg",
+        "Blancpain/blancpain-fifty-fathoms-bathyscaphe-automatic-blue-dial-mens-watch-5000a-014-0o52a.jpg",
+        "Blancpain/blancpain-fifty-fathoms-bathyscaphe-automatic-blue-dial-men_s-watch-5000-0240-naoa.jpg",
+        "Blancpain/blancpain-fifty-fathoms-bathyscaphe-automatic-blue-dial-men_s-watch-5000-0240-o52a.jpg",
+        "Blancpain/blancpain-fifty-fathoms-bathyscaphe-automatic-grey-dial-watch-50541110naba.jpg",
+        "Blancpain/blancpain-fifty-fathoms-bathyscaphe-automatic-white-dial-watch-51001127nata.jpg",
+        "Blancpain/blancpain-fifty-fathoms-chronograph-automatic-black-dial-mens-watch-5085f113052a (1).jpg",
+        "Blancpain/blancpain-fifty-fathoms-chronograph-automatic-black-dial-mens-watch-5085f113052a.jpg",
+        "Blancpain/blancpain-fifty-fathoms-chronograph-automatic-green-dial-mens-watch-5200-0153-b52a.jpg",
+        "Blancpain/blancpain-grande-date-white-dial-automatic-mens-watch-6669112755b_1.jpg",
+        "Blancpain/blancpain-ladybird-ultraplate-automatic-ladies-watch-0063a295463a.jpg",
+        "Blancpain/blancpain-ladybird-ultraplate-automatic-ladies-watch-0063b195463a.jpg",
+        "Blancpain/blancpain-ultraplate-white-dial-diamond-ladies-watch-6102-4628-95a.jpg",
+        "Blancpain/blancpain-villeret-18kt-rose-gold-automatic-mens-watch-6651298755b.jpg",
+        "Blancpain/blancpain-villeret-18kt-rose-gold-automatic-mens-watch-6654361355b.jpg"
+      ],
+      "Franck Muller": [
+        "Franck Muller/franck-muller-cintree-curvex-automatic-diamond-ladies-watch-7500-sc-at-fo-rel-d-8cd-ac.jpg",
+        "Franck Muller/franck-muller-cintree-curvex-automatic-silver-dial-mens-watch-cx40scatac5nac5n_1.jpg",
+        "Franck Muller/franck-muller-cintree-curvex-quartz-diamond-white-dial-ladies-watch-2852qzcoldrmmopd1r5npkstrap.jpg",
+        "Franck Muller/franck-muller-color-dreams-automatic-silver-dial-ladies-watch-7500-sc-at-fo-col-dr-ho-asia-ltd-5n_1.jpg",
+        "Franck Muller/franck-muller-curvex-automatic-diamond-silver-dial-ladies-watch-7500-sc-at-fo-col-dr-d-5n_1.jpg",
+        "Franck Muller/franck-muller-curvex-cx-automatic-diamond-ladies-watch-cx-30-sc-at-fo-d-ld-5n-pb.jpg",
+        "Franck Muller/franck-muller-infinity-quartz-diamond-white-dial-mens-watch-8041qzdr5n.jpg",
+        "Franck Muller/franck-muller-long-island-quartz-diamond-silver-dial-ladies-watch-952-qz-d-1r-rel-ho-5n.jpg",
+        "Franck Muller/franck-muller-master-square-quartz-diamond-ladies-watch-6002-s-qz-66-d-rel-6002-s-qz-66-d-rel.jpg",
+        "Franck Muller/franck-muller-round-quartz-silver-dial-ladies-watch-8038qzcolv5nsil.jpg",
+        "Franck Muller/franck-muller-vanguard-automatic-diamond-silver-dial-ladies-watch-v-32-sc-at-fo-d-col-dr-5n-rs-5n.jpg",
+        "Franck Muller/franck-muller-vanguard-automatic-diamond-silver-dial-unisex-watch-v-32-sc-at-fo-d-og-rs-wg.jpg",
+        "Franck Muller/franck-muller-vanguard-automatic-diamond-white-dial-ladies-watch-v-32-sc-at-fo-l-d-col-dr-ac-rs-ac.jpg",
+        "Franck Muller/franck-muller-vanguard-casablanca-automatic-watch-v-41-sc-dt-casa-cm.jpg",
+        "Franck Muller/franck-muller-vanguard-hand-wind-diamond-ladies-watch-v-35-s6-sqt-d-ac-rg-ac.jpg",
+        "Franck Muller/franck-muller-vanguard-moonphase-quartz-diamond-ladies-watch-v32scatfoldcdacrg.jpg",
+        "Franck Muller/franck-muller-vanguard-rose-hand-wind-diamond-ladies-watch-v-35-s6-sqt-rose-nr-d-cd-2ro-bc.jpg",
+        "Franck Muller/franck-muller-vanguard-slim-vintage-automatic-watch-v-41-s-s6-at-fo-vin-ve-o.jpg"
+      ],
+      "Girard-Perregaux": [
+        "Girard-Perregaux/CMF_1543-ah13ey97g2neulc6cfu3mkbc-Rect250_305.png",
+        "Girard-Perregaux/CM_1696-248qsw9e1r9txpvju9fcbof7-Rect250_305.png",
+        "Girard-Perregaux/CM_1757-cen06o11qwz6hfngrc72bf4i-Rect250_305.png",
+        "Girard-Perregaux/CM_1853-i7bg6105q8nawgrunsfrna9h-Rect250_305.png",
+        "Girard-Perregaux/CM_1928-mk0qbuxouvufzqg58hzx8r6k-Rect250_305.png",
+        "Girard-Perregaux/CM_1972-7pvwmp2ahebvj4tjtftii2j3-Rect250_305.png",
+        "Girard-Perregaux/CM_1986-22a256fpcgatjmdid55rzqod-Rect250_305.png",
+        "Girard-Perregaux/CM_2144-0144k7b3ys0qml6gejejass5-Rect250_305.png",
+        "Girard-Perregaux/CM_2775-sc4zx5es7jm9029tclszpn7r-Rect250_305.png",
+        "Girard-Perregaux/girard-perregaux-1966-lady-automatic-dimond-watch-49528d52a771ck6a.jpg",
+        "Girard-Perregaux/girard-perregaux-laureato-perpetual-automatic-blue-dial-watch-810351143111a_1.jpg",
+        "Girard-Perregaux/girard-perregaux-sea-hawk-chronograph-automatic-black-dial-mens-watch-4997134632bb6c.jpg",
+        "Girard-Perregaux/preowned-girard-perregaux-30-anni-fiat-47990-automatic-white-dial-mens-watch-47990.jpg",
+        "Girard-Perregaux/preowned-girard-perregaux-bmw-oracle-racing-chronograph-automatic-white-dial-ladies-watch-80440.jpg",
+        "Girard-Perregaux/preowned-girard-perregaux-cats-eye-automatic-ladies-watch-80493d11a16111a.jpg",
+        "Girard-Perregaux/preowned-girard-perregaux-classique-elegance-hand-wind-white-dial-mens-watch-47620052111.jpg",
+        "Girard-Perregaux/preowned-girard-perregaux-laureato-blue-dial-mens-watch-810101143111a_1.jpg",
+        "Girard-Perregaux/preowned-girard-perregaux-perregaux-classique-elegance-hand-wind-white-dial-mens-watch-47620052111.jpg"
+      ],
+      "Parmigiani Fleurier": [
+        "Parmigiani Fleurier/1sphxq25k4ei-wn9e8lerslk96iq40tw1t68j-Square280.jpg",
+        "Parmigiani Fleurier/2805995b501s-8i2ewhglaozyp0ssgd4xx5yw-Square280.jpg",
+        "Parmigiani Fleurier/31834968-3fwmwuh0elya8vlvbp0mcf3k-Square280.jpg",
+        "Parmigiani Fleurier/35381038-hsxtn9rtinrjonkxsca6o9on-Square280.jpg",
+        "Parmigiani Fleurier/39620806-7s46fpz3258g5098goyhbv5t-Square280.jpg",
+        "Parmigiani Fleurier/44910491-pegm2k7q9j6qmp9rbmhru6wp-Square280.jpg",
+        "Parmigiani Fleurier/46247662-j7lkf9tziahppiqw1q7k0bgg-Square280.jpg",
+        "Parmigiani Fleurier/46506611-20oh79vtrs8s6a0dql05450h-Square280.jpg",
+        "Parmigiani Fleurier/46509851-yf8au1vd6ofyl9rhw9v0gsbz-Square280.jpg",
+        "Parmigiani Fleurier/46523509-2s1btzce3b3as4fypit8ns5x-Square280.jpg",
+        "Parmigiani Fleurier/46528916-51avn7f88jytegep8082xeen-Square280.jpg",
+        "Parmigiani Fleurier/46535171-brdam332ujst7yn4u3rikr9o-Square280.jpg",
+        "Parmigiani Fleurier/CM_1716-yfjoioed3t9cig45lwux2mgi-Rect250_305.png",
+        "Parmigiani Fleurier/CM_1886-txfkjx7bw6ckpdn4numgf2nc-Rect250_305.png",
+        "Parmigiani Fleurier/CM_2075-wl92f8hqxfhmpcvmjfm36x0c-Rect250_305.png",
+        "Parmigiani Fleurier/CM_2237-hbhdk9y1kgtdpnyjgfp9xzna-Rect250_305.png",
+        "Parmigiani Fleurier/CM_3707-s32spobtrjb6yperp8bslrli-Rect250_305.png",
+        "Parmigiani Fleurier/preowned-parmigiani-fleurier-toric-automatic-mens-watch-pfc4231602400ha1441.jpg"
+      ],
+      "Ulysse Nardin": [
+        "Ulysse Nardin/preowned-ulysse-nardin-181229-automatic-gold-dial-ladies-watch-181229.jpg",
+        "Ulysse Nardin/preowned-ulysse-nardin-acqua-perpetual-automatic-blue-dial-mens-watch-33377.jpg",
+        "Ulysse Nardin/preowned-ulysse-nardin-black-sea-black-dial-mens-watch-263923c924_1.jpg",
+        "Ulysse Nardin/preowned-ulysse-nardin-blast-skeleton-x-transparent-dial-mens-watch-371326003-371326003.jpg",
+        "Ulysse Nardin/preowned-ulysse-nardin-caprice-automatic-white-dial-ladies-watch-13391c691-13391c691.jpg",
+        "Ulysse Nardin/preowned-ulysse-nardin-dual-time-automatic-silver-dial-ladies-watch-3343126.jpg",
+        "Ulysse Nardin/preowned-ulysse-nardin-dual-time-gmt-silver-dial-mens-watch-334612691-334612691.jpg",
+        "Ulysse Nardin/preowned-ulysse-nardin-executive-dual-time-gmt-black-dial-mens-watch-24600342-24600342.jpg",
+        "Ulysse Nardin/preowned-ulysse-nardin-marine-chronometer-manufacture-silver-dial-mens-watch-1186126361-1186126361.jpg",
+        "Ulysse Nardin/preowned-ulysse-nardin-marine-tourbillon-blue-dial-mens-watch-12831813e3-12831813e3.jpg",
+        "Ulysse Nardin/preowned-ulysse-nardin-maxi-marine-chronometer-white-dial-mens-watch-2666740-2666740.jpg",
+        "Ulysse Nardin/preowned-ulysse-nardin-san-marco-alarm-automatic-silver-dial-mens-watch-60377.jpg",
+        "Ulysse Nardin/ulysse-nardin-automatic-diamond-ladies-watch-8102116b2990-8102116b2990.jpg",
+        "Ulysse Nardin/ulysse-nardin-classic-automatic-silver-dial-watch-8153111790-8153111790.jpg",
+        "Ulysse Nardin/ulysse-nardin-classico-dual-time-automatic-diamond-blue-dial-ladies-watch-3243222393-3243222393.jpg",
+        "Ulysse Nardin/ulysse-nardin-executive-dual-time-mother-of-pearl-dial-diamond-ladies-watch-24310393-24310393.jpg",
+        "Ulysse Nardin/ulysse-nardin-executive-skeleton-tourbillon-tourbillon-men_s-watch-1713-139.jpg",
+        "Ulysse Nardin/ulysse-nardin-freak-x-automatic-black-dial-mens-watch-230527002-230527002.jpg"
+      ],
+      "Zenith": [
+        "zenith/preowned-zenith-pilot-type-20-automatic-mens-watch-11243267921c900-11243267921c900.jpg",
+        "zenith/zenith-10th-strikingcarbonskeleton-dialrubber-strap-watch-1022604052w98r573-1022604052w98r573.jpg",
+        "zenith/zenith-automatic-silver-dial-ladies-watch-22320069201c832-22320069201c832.jpg",
+        "zenith/zenith-chronomaster-blue-open-boutique-edition-chronograph-automatic-mens-watch-033300360451m3300-033300360451m3300_1.jpg",
+        "zenith/zenith-chronomaster-chronograph-automatic-white-dial-mens-watch-033200360069c902-033200360069c902.jpg",
+        "zenith/zenith-chronomaster-open-chronograph-automatic-black-dial-mens-watch-033300360421m3300-033300360421m3300.jpg",
+        "zenith/zenith-chronomaster-original-chronograph-automatic-chronometer-blue-dial-mens-watch-033200360051c902-033200360051c902.jpg",
+        "zenith/zenith-chronomaster-original-chronograph-automatic-chronometer-mens-watch-033200360052c910-033200360052c910.jpg",
+        "zenith/zenith-chronomaster-original-triple-calendar-automatic-silver-dial-watch-033400361038c911-033400361038c911.jpg",
+        "zenith/zenith-chronomaster-revival-a385-chronograph-automatic-mens-watch-03a384400385m385-03a384400385m385.jpg",
+        "zenith/zenith-defy-chronograph-automatic-chronometer-black-dial-mens-watch-039500360021i001-039500360021i001_1.jpg",
+        "zenith/zenith-defy-chronograph-automatic-mens-watch-979100900402i001-979100900402i001.jpg",
+        "zenith/zenith-defy-skyline-automatic-grey-dial-watch-039300362002i001-039300362002i001.jpg",
+        "zenith/zenith-defy-skyline-black-sunburst-dial-automatic-mens-watch-039300362021i001-039300362021i001.jpg",
+        "zenith/zenith-el-primero-striking-10th-chronograph-automatic-watch-032043405201r580-032043405201r580.jpg",
+        "zenith/zenith-elite-automatic-diamond-ladies-watch-16320069201c832-16320069201c832.jpg",
+        "zenith/zenith-elite-classic-automatic-diamond-ladies-watch-22320067001c831-22320067001c831.jpg",
+        "zenith/zenith-pilot-automatic-black-dial-mens-watch-494000362021i001-494000362021i001.jpg"
+      ]
+    };
+
+    Object.entries(localBrandImages).forEach(([brand, images]) => {
+      watches
+        .filter((watch) => watch.brand === brand)
+        .slice(0, images.length)
+        .forEach((watch, index) => {
+          watch.image = images[index];
+        });
+    });
+
+    function enforceBrandPriceFloors() {
+      const rules = {
+        Rolex: { originalMin: 15500, saleMin: 7000 },
+        "Richard Mille": { originalMin: 165000, saleMin: 80300 }
+      };
+
+      const richardMilleSalePrices = [
+        80300, 90200, 120000, 135000, 145568, 155000, 160000, 165000, 175000,
+        188000, 199000, 205000, 215000, 234000, 238000, 260000, 325000, 520000
+      ];
+
+      watches.forEach((watch, index) => {
+        const rule = rules[watch.brand];
+
+        if (!rule) {
+          return;
+        }
+
+        if (watch.brand === "Richard Mille") {
+          const richardMilleIndex = watches.filter((item) => item.brand === "Richard Mille").indexOf(watch);
+          const salePrice = richardMilleSalePrices[richardMilleIndex % richardMilleSalePrices.length];
+          watch.price = salePrice;
+          watch.originalPrice = Math.max(watch.originalPrice || 0, salePrice + 12000);
+          return;
+        }
+
+        const priceStep = (index % 9) * 750;
+        watch.originalPrice = Math.max(watch.originalPrice || 0, rule.originalMin + priceStep);
+        watch.price = Math.max(watch.price || 0, rule.saleMin + priceStep);
+
+        if (watch.price >= watch.originalPrice) {
+          watch.originalPrice = watch.price + 5000;
+        }
+      });
+    }
+
+    enforceBrandPriceFloors();
+
+    function enforceGlobalMinimumPrice() {
+      watches.forEach((watch, index) => {
+        const priceStep = (index % 7) * 500;
+        const minimumPrice = 12000 + priceStep;
+
+        if (watch.price < minimumPrice) {
+          watch.price = minimumPrice;
+        }
+
+        if (!watch.originalPrice || watch.originalPrice <= watch.price) {
+          watch.originalPrice = watch.price + 5000;
+        }
+      });
+    }
+
+    enforceGlobalMinimumPrice();
+
+    const grid = document.querySelector("#watch-grid");
+    const menuToggle = document.querySelector("#menu-toggle");
+    const nav = document.querySelector(".nav");
+    const searchFilter = document.querySelector("#search-filter");
+    const categoryFilter = document.querySelector("#category-filter");
+    const sortFilter = document.querySelector("#sort-filter");
+    const chips = document.querySelectorAll(".brand-chip");
+    const categoryCards = document.querySelectorAll(".category");
+    const bagButton = document.querySelector(".bag");
+    const cartItems = document.querySelector("#cart-items");
+    const cartCount = document.querySelector("#cart-count");
+    const cartTotal = document.querySelector("#cart-total");
+    const paymentDetails = document.querySelector("#payment-details");
+    const paymentProofForm = document.querySelector("#payment-proof-form");
+    const proofEmail = document.querySelector("#proof-email");
+    const proofFile = document.querySelector("#proof-file");
+    const proofHash = document.querySelector("#proof-hash");
+    const proofNote = document.querySelector("#proof-note");
+    const confirmOrder = document.querySelector("#confirm-order");
+    const promoImage = document.querySelector("#promo-watch-image");
+    const promoTitle = document.querySelector("#promo-title");
+    const promoModel = document.querySelector("#promo-model");
+    const promoShop = document.querySelector("#promo-shop");
+    const wishlistCount = document.querySelector("#wishlist-count");
+    const wishlistDrawer = document.querySelector("#wishlist-drawer");
+    const drawerBackdrop = document.querySelector("#drawer-backdrop");
+    const drawerClose = document.querySelector("#drawer-close");
+    const wishlistList = document.querySelector("#wishlist-list");
+    const drawerWishlistTab = document.querySelector("#drawer-wishlist-tab");
+    const drawerBagTab = document.querySelector("#drawer-bag-tab");
+    const saveWishlist = document.querySelector("#save-wishlist");
+    const viewWishlist = document.querySelector("#view-wishlist");
+    const bagDrawer = document.querySelector("#bag-drawer");
+    const bagDrawerClose = document.querySelector("#bag-drawer-close");
+    const bagList = document.querySelector("#bag-list");
+    const bagDrawerTitle = document.querySelector("#bag-drawer-title");
+    const bagDrawerTotal = document.querySelector("#bag-drawer-total");
+    const checkoutBag = document.querySelector("#checkout-bag");
+    const continueShopping = document.querySelector("#continue-shopping");
+    const productBackdrop = document.querySelector("#product-backdrop");
+    const productModal = document.querySelector("#product-modal");
+    const productClose = document.querySelector("#product-close");
+    const detailImage = document.querySelector("#detail-image");
+    const detailThumbOne = document.querySelector("#detail-thumb-one");
+    const detailThumbTwo = document.querySelector("#detail-thumb-two");
+    const detailThumbThree = document.querySelector("#detail-thumb-three");
+    const detailBrand = document.querySelector("#detail-brand");
+    const detailTitle = document.querySelector("#detail-title");
+    const detailSku = document.querySelector("#detail-sku");
+    const detailDiscount = document.querySelector("#detail-discount");
+    const detailRetail = document.querySelector("#detail-retail");
+    const detailPrice = document.querySelector("#detail-price");
+    const detailFinance = document.querySelector("#detail-finance");
+    const detailDescription = document.querySelector("#detail-description");
+    const detailAdd = document.querySelector("#detail-add");
+    const detailWishlist = document.querySelector("#detail-wishlist");
+    const cart = [];
+    let activeDetailWatch = null;
+
+    const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+    const promoStorageKey = "chrono24PromoWatch";
+    const promoDuration = 30 * 60 * 1000;
+    const wishlistStorageKey = "chrono24Wishlist";
+    const wishlist = new Set(JSON.parse(localStorage.getItem(wishlistStorageKey) || "[]"));
+
+    function getPromoWatch() {
+      const now = Date.now();
+      let stored = null;
+
+      try {
+        stored = JSON.parse(localStorage.getItem(promoStorageKey) || "null");
+      } catch {
+        localStorage.removeItem(promoStorageKey);
+      }
+
+      if (stored && now - stored.savedAt < promoDuration) {
+        const savedWatch = watches.find((watch) => watch.id === stored.watchId);
+        if (savedWatch) {
+          return savedWatch;
+        }
+      }
+
+      const nextWatch = watches[Math.floor(Math.random() * watches.length)];
+      localStorage.setItem(promoStorageKey, JSON.stringify({ watchId: nextWatch.id, savedAt: now }));
+      return nextWatch;
+    }
+
+    function renderPromoAd() {
+      const watch = getPromoWatch();
+      const discount = watch.originalPrice ? watch.originalPrice - watch.price : 0;
+      promoImage.src = watch.image;
+      promoImage.alt = `${watch.model} wrist watch`;
+      promoTitle.textContent = discount > 0 ? `Featured Sale: Save ${money.format(discount)}` : "Featured Luxury Watch";
+      promoModel.textContent = `${watch.model} - ${money.format(watch.price)}`;
+      promoShop.dataset.category = watch.brand;
+    }
+
+    function filterWatches(category) {
+      const query = searchFilter.value.trim().toLowerCase();
+      const categoryMatches = category === "All Models"
+        ? watches
+        : watches.filter((watch) => watch.brand === category || watch.category === category);
+
+      if (!query) {
+        return categoryMatches;
+      }
+
+      return categoryMatches.filter((watch) => {
+        const searchable = `${watch.brand} ${watch.model} ${watch.category} ${watch.size}`.toLowerCase();
+        return searchable.includes(query);
+      });
+    }
+
+    function sortWatches(selected, sortMode) {
+      if (sortMode === "price-asc") {
+        return [...selected].sort((a, b) => a.price - b.price);
+      }
+
+      if (sortMode === "price-desc") {
+        return [...selected].sort((a, b) => b.price - a.price);
+      }
+
+      return selected;
+    }
+
+    function renderWatches(category = "All Models") {
+      const selected = sortWatches(filterWatches(category), sortFilter.value);
+      grid.innerHTML = selected.length ? selected.map((watch) => {
+        const hasDiscount = watch.originalPrice && watch.originalPrice > watch.price;
+        const isLiked = wishlist.has(String(watch.id));
+        return `
+        <article class="watch-card" data-id="${watch.id}" tabindex="0" aria-label="View details for ${watch.model}">
+          <div class="watch-media">
+            <button class="like-button ${isLiked ? "liked" : ""}" type="button" data-id="${watch.id}" aria-label="${isLiked ? "Remove from wishlist" : "Add to wishlist"}" aria-pressed="${isLiked}">
+              ${isLiked ? "&hearts;" : "&#9825;"}
+            </button>
+            <img src="${watch.image}" alt="${watch.model} wrist watch">
+          </div>
+          <div class="watch-body">
+            <div class="meta">
+              <span>${watch.brand}</span>
+              <span>${watch.size}</span>
+            </div>
+            <h3>${watch.model}</h3>
+            <div class="meta">
+              <span>${watch.category}</span>
+            </div>
+            <div class="price-row">
+              <span class="price">${hasDiscount ? `<span class="price-original">${money.format(watch.originalPrice)}</span><span class="price-discounted">${money.format(watch.price)}</span>` : money.format(watch.price)}</span>
+              <button class="add" type="button" data-id="${watch.id}">Add to Bag</button>
+            </div>
+          </div>
+        </article>
+      `;
+      }).join("") : `<div class="empty-state">No watches found for this selection.</div>`;
+    }
+
+    function getWatchById(id) {
+      return watches.find((item) => item.id === Number(id));
+    }
+
+    function getBrandGalleryImages(watch) {
+      const brandImages = watches
+        .filter((item) => item.brand === watch.brand)
+        .map((item) => item.image);
+      return [...new Set([watch.image, ...brandImages])].slice(0, 3);
+    }
+
+    function renderDetailWishlistState() {
+      if (!activeDetailWatch) {
+        return;
+      }
+
+      const isLiked = wishlist.has(String(activeDetailWatch.id));
+      detailWishlist.textContent = isLiked ? "Remove from Wishlist" : "Add to Wishlist";
+    }
+
+    function getCategoryDescription(category) {
+      const descriptions = {
+        "Automatic Steel": "built as a versatile daily luxury watch with a durable case profile and confident wrist presence",
+        "Gold Dress Watches": "selected for formal wear, refined case finishing, and a dress-watch profile that suits polished occasions",
+        "Sport Chronographs": "chosen for its performance-inspired chronograph character, bold dial layout, and collectible sport styling",
+        "Ceramic Limited Editions": "picked for its modern limited-edition feel, technical materials, and distinctive collector appeal"
+      };
+
+      return descriptions[category] || "selected for its luxury finishing, mechanical character, and collector-ready presentation";
+    }
+
+    function getBrandDescription(brand) {
+      const descriptions = {
+        Rolex: "Rolex collectors value this kind of piece for its recognizable design language and long-standing market demand.",
+        "Patek Philippe": "Patek Philippe pieces are prized for quiet prestige, high-end finishing, and enduring collector interest.",
+        "Audemars Piguet": "Audemars Piguet brings a sharper, architectural presence that works especially well for statement collectors.",
+        "Richard Mille": "Richard Mille watches lean into technical spectacle, lightweight materials, and rare high-performance watchmaking.",
+        "Vacheron Constantin": "Vacheron Constantin offers a more understated expression of high horology with deep traditional credibility.",
+        Cartier: "Cartier watches stand out through shape, proportion, and jewelry-house elegance as much as watchmaking.",
+        Omega: "Omega models are known for practical luxury, strong heritage, and sport-watch reliability.",
+        "Jaeger-LeCoultre": "Jaeger-LeCoultre adds manufacture pedigree and a more subtle collector sensibility.",
+        "A. Lange & Sohne": "A. Lange & Sohne is known for meticulous German finishing and serious dress-watch refinement.",
+        Breguet: "Breguet carries classical watchmaking cues, refined dials, and historic prestige.",
+        Hublot: "Hublot is built for a bolder wrist presence with modern materials and high-contrast design.",
+        "IWC Schaffhausen": "IWC Schaffhausen favors clean engineering, legible dials, and everyday mechanical strength.",
+        Panerai: "Panerai brings oversized Italian dive-watch character and instantly recognizable case design.",
+        Breitling: "Breitling leans into aviation and tool-watch energy with strong sport appeal.",
+        "TAG Heuer": "TAG Heuer models bring motorsport styling and accessible sport-luxury character.",
+        "Grand Seiko": "Grand Seiko is appreciated for dial texture, case polishing, and precise Japanese watchmaking.",
+        Tudor: "Tudor offers vintage-inspired sport-watch character with strong everyday wearability.",
+        Chopard: "Chopard blends jewelry-house polish with elegant Swiss watchmaking.",
+        Piaget: "Piaget is known for slim profiles, precious-metal elegance, and refined dress-watch design.",
+        Blancpain: "Blancpain is especially respected for dive-watch heritage and traditional Swiss mechanical watchmaking.",
+        "Ulysse Nardin": "Ulysse Nardin brings nautical identity, technical creativity, and distinctive case-and-dial design.",
+        Zenith: "Zenith is closely associated with high-frequency chronograph heritage and technical sport watches.",
+        "Girard-Perregaux": "Girard-Perregaux pairs historic watchmaking credibility with elegant, less-common collector choices.",
+        "Parmigiani Fleurier": "Parmigiani Fleurier is valued for refined finishing, independent spirit, and understated high horology.",
+        "Franck Muller": "Franck Muller is known for expressive case shapes, playful numerals, and bold wrist personality."
+      };
+
+      return descriptions[brand] || "This brand is represented here with a focus on luxury finishing and collector appeal.";
+    }
+
+    function buildProductDescription(watch) {
+      const categoryText = getCategoryDescription(watch.category);
+      const brandText = getBrandDescription(watch.brand);
+      return `${watch.brand} ${watch.model} is a ${watch.size} ${watch.category.toLowerCase()} model, ${categoryText}. ${brandText}`;
+    }
+
+    function openProductDetail(watch) {
+      if (!watch) {
+        return;
+      }
+
+      activeDetailWatch = watch;
+      const discount = watch.originalPrice && watch.originalPrice > watch.price
+        ? Math.round(((watch.originalPrice - watch.price) / watch.originalPrice) * 100)
+        : 0;
+      const monthly = Math.max(250, Math.round(watch.price / 24));
+      const gallery = getBrandGalleryImages(watch);
+
+      detailImage.src = watch.image;
+      detailImage.alt = `${watch.model} wrist watch`;
+      [detailThumbOne, detailThumbTwo, detailThumbThree].forEach((thumb, index) => {
+        thumb.src = gallery[index] || watch.image;
+        thumb.alt = "";
+      });
+      detailBrand.textContent = watch.brand;
+      detailTitle.textContent = watch.model;
+      detailSku.textContent = `Item No. ${String(watch.id).padStart(4, "0")}-${watch.size.replace(/\W/g, "")}`;
+      detailDiscount.textContent = discount > 0 ? `${discount}% OFF` : "SALE";
+      detailRetail.innerHTML = watch.originalPrice
+        ? `Retail <s>${money.format(watch.originalPrice)}</s><span class="product-sale">Father's Day Sale</span>`
+        : `<span class="product-sale">Father's Day Sale</span>`;
+      detailPrice.textContent = money.format(watch.price);
+      detailFinance.innerHTML = `<span class="product-apr">0% APR</span> or as low as <strong>${money.format(monthly)}/mo</strong> with affirm. <u>Prequalify now</u>`;
+      detailDescription.textContent = buildProductDescription(watch);
+      renderDetailWishlistState();
+      productModal.classList.add("open");
+      productBackdrop.classList.add("open");
+      productModal.setAttribute("aria-hidden", "false");
+      productClose.focus();
+    }
+
+    function closeProductDetail() {
+      productModal.classList.remove("open");
+      productBackdrop.classList.remove("open");
+      productModal.setAttribute("aria-hidden", "true");
+      activeDetailWatch = null;
+    }
+
+    function setCategory(category) {
+      categoryFilter.value = category;
+      chips.forEach((chip) => chip.classList.toggle("active", chip.dataset.category === category));
+      renderWatches(category);
+    }
+
+    function toggleWishlist(id) {
+      const key = String(id);
+
+      if (wishlist.has(key)) {
+        wishlist.delete(key);
+      } else {
+        wishlist.add(key);
+      }
+
+      localStorage.setItem(wishlistStorageKey, JSON.stringify([...wishlist]));
+      renderWishlistDrawer();
+      renderWatches(categoryFilter.value);
+    }
+
+    function getWishlistItems() {
+      return watches.filter((watch) => wishlist.has(String(watch.id)));
+    }
+
+    function renderWishlistDrawer() {
+      const items = getWishlistItems();
+      wishlistCount.textContent = `Wishlist (${items.length})`;
+      drawerWishlistTab.textContent = `Wishlist(${items.length})`;
+
+      wishlistList.innerHTML = items.length ? items.map((watch) => {
+        const discountPercent = watch.originalPrice
+          ? Math.round(((watch.originalPrice - watch.price) / watch.originalPrice) * 100)
+          : 0;
+
+        return `
+          <article class="wishlist-row">
+            <img src="${watch.image}" alt="${watch.model} wrist watch">
+            <div>
+              <div class="wishlist-brand">${watch.brand}</div>
+              <div class="wishlist-model">${watch.model}</div>
+              ${discountPercent > 0 ? `<span class="wishlist-badge">${discountPercent}% OFF</span>` : ""}
+              <div class="wishlist-price">
+                <span>${money.format(watch.price)}</span>
+                ${watch.originalPrice ? `<span class="wishlist-old">${money.format(watch.originalPrice)}</span>` : ""}
+              </div>
+              <button class="wishlist-add" type="button" data-id="${watch.id}">Add to Bag</button>
+            </div>
+            <button class="wishlist-remove" type="button" data-id="${watch.id}" aria-label="Remove ${watch.model} from wishlist">Remove</button>
+          </article>
+        `;
+      }).join("") : `<div class="wishlist-empty">Your wishlist is empty. Tap the heart on any watch to save it here.</div>`;
+    }
+
+    function openWishlistDrawer() {
+      renderWishlistDrawer();
+      wishlistDrawer.classList.add("open");
+      drawerBackdrop.classList.add("open");
+      wishlistDrawer.setAttribute("aria-hidden", "false");
+    }
+
+    function closeWishlistDrawer() {
+      wishlistDrawer.classList.remove("open");
+      drawerBackdrop.classList.remove("open");
+      wishlistDrawer.setAttribute("aria-hidden", "true");
+    }
+
+    function openBagDrawer() {
+      renderCart();
+      closeWishlistDrawer();
+      bagDrawer.classList.add("open");
+      drawerBackdrop.classList.add("open");
+      bagDrawer.setAttribute("aria-hidden", "false");
+    }
+
+    function closeBagDrawer() {
+      bagDrawer.classList.remove("open");
+      if (!wishlistDrawer.classList.contains("open")) {
+        drawerBackdrop.classList.remove("open");
+      }
+      bagDrawer.setAttribute("aria-hidden", "true");
+    }
+
+    function closeDrawers() {
+      wishlistDrawer.classList.remove("open");
+      bagDrawer.classList.remove("open");
+      drawerBackdrop.classList.remove("open");
+      wishlistDrawer.setAttribute("aria-hidden", "true");
+      bagDrawer.setAttribute("aria-hidden", "true");
+    }
+
+    function renderBagDrawer() {
+      const total = cart.reduce((sum, watch) => sum + watch.price, 0);
+      bagDrawerTitle.textContent = `Bag(${cart.length})`;
+      bagDrawerTotal.textContent = money.format(total);
+      bagList.innerHTML = cart.length ? cart.map((watch, index) => `
+        <article class="bag-row">
+          <img src="${watch.image}" alt="${watch.model} wrist watch">
+          <div>
+            <strong>${watch.brand}</strong>
+            <div class="bag-model">${watch.model}</div>
+            <div class="bag-price">${money.format(watch.price)}</div>
+          </div>
+          <button class="bag-remove" type="button" data-index="${index}">Remove</button>
+        </article>
+      `).join("") : `<div class="bag-empty">Your bag is empty. Add a watch to start checkout.</div>`;
+    }
+
+    function renderCart() {
+      const total = cart.reduce((sum, watch) => sum + watch.price, 0);
+      bagButton.textContent = `View Bag (${cart.length})`;
+      cartCount.textContent = cart.length;
+      drawerBagTab.textContent = `Bag(${cart.length})`;
+      cartTotal.textContent = money.format(total);
+      cartItems.innerHTML = cart.length ? cart.map((watch, index) => `
+        <div class="cart-item">
+          <img src="${watch.image}" alt="${watch.model} wrist watch">
+          <div>
+            <strong>${watch.model}</strong>
+            <span>${watch.brand} - ${money.format(watch.price)}</span>
+          </div>
+          <button class="remove-item" type="button" data-index="${index}">Remove</button>
+        </div>
+      `).join("") : `<div class="cart-empty">Your bag is empty. Add a watch to prepare a Bitcoin checkout quote.</div>`;
+      renderBagDrawer();
+      renderPaymentDetails();
+    }
+
+    function renderPaymentDetails() {
+      const total = cart.reduce((sum, watch) => sum + watch.price, 0);
+      const totalText = money.format(total);
+
+      paymentDetails.innerHTML = `
+        <strong>Bitcoin Wallet Address</strong>
+        <p>Send ${totalText} equivalent in BTC after confirming your order. Include your order details when contacting the private desk.</p>
+        <div class="payment-address-row">
+          <code class="payment-code" id="bitcoin-wallet-address">${bitcoinWallet}</code>
+          <button class="copy-address" type="button" data-copy-address="${bitcoinWallet}">Copy</button>
+        </div>
+      `;
+    }
+
+    function copyTextToClipboard(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        return navigator.clipboard.writeText(text);
+      }
+
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.left = "-9999px";
+      document.body.appendChild(textarea);
+      textarea.select();
+
+      try {
+        document.execCommand("copy");
+        return Promise.resolve();
+      } catch (error) {
+        return Promise.reject(error);
+      } finally {
+        document.body.removeChild(textarea);
+      }
+    }
+
+    chips.forEach((chip) => {
+      chip.addEventListener("click", () => setCategory(chip.dataset.category));
+    });
+
+    categoryCards.forEach((card) => {
+      card.addEventListener("click", () => setCategory(card.dataset.category));
+      card.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          setCategory(card.dataset.category);
+        }
+      });
+    });
+
+    categoryFilter.addEventListener("change", (event) => setCategory(event.target.value));
+    searchFilter.addEventListener("input", () => renderWatches(categoryFilter.value));
+    sortFilter.addEventListener("change", () => renderWatches(categoryFilter.value));
+
+    paymentDetails.addEventListener("click", (event) => {
+      const copyButton = event.target.closest(".copy-address");
+
+      if (!copyButton) {
+        return;
+      }
+
+      copyTextToClipboard(copyButton.dataset.copyAddress)
+        .then(() => {
+          copyButton.textContent = "Copied";
+          showSiteNotification("Address copied", "Bitcoin wallet address copied to your clipboard.");
+          window.setTimeout(() => {
+            copyButton.textContent = "Copy";
+          }, 1600);
+        })
+        .catch(() => {
+          showSiteNotification("Copy failed", "Select and copy the Bitcoin wallet address manually.", "error");
+        });
+    });
+
+    grid.addEventListener("click", (event) => {
+      if (event.target.matches(".like-button")) {
+        toggleWishlist(event.target.dataset.id);
+        return;
+      }
+
+      if (event.target.matches(".add")) {
+        const watch = getWatchById(event.target.dataset.id);
+        cart.push(watch);
+        renderCart();
+        document.querySelector("#payment").scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+
+      const card = event.target.closest(".watch-card");
+      if (card) {
+        openProductDetail(getWatchById(card.dataset.id));
+      }
+    });
+
+    grid.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") {
+        return;
+      }
+
+      if (event.target.closest("button")) {
+        return;
+      }
+
+      const card = event.target.closest(".watch-card");
+      if (card) {
+        event.preventDefault();
+        openProductDetail(getWatchById(card.dataset.id));
+      }
+    });
+
+    cartItems.addEventListener("click", (event) => {
+      if (!event.target.matches(".remove-item")) {
+        return;
+      }
+
+      cart.splice(Number(event.target.dataset.index), 1);
+      renderCart();
+    });
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.textContent = isOpen ? "×" : "☰";
+    });
+
+    nav.addEventListener("click", (event) => {
+      if (event.target.matches("a") && nav.classList.contains("open")) {
+        nav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "☰";
+      }
+    });
+
+    bagButton.addEventListener("click", openBagDrawer);
+
+    bagDrawerClose.addEventListener("click", closeBagDrawer);
+    checkoutBag.addEventListener("click", () => {
+      closeBagDrawer();
+      document.querySelector("#payment").scrollIntoView({ behavior: "smooth" });
+    });
+    continueShopping.addEventListener("click", () => {
+      closeBagDrawer();
+    });
+
+    wishlistCount.addEventListener("click", openWishlistDrawer);
+    drawerClose.addEventListener("click", closeWishlistDrawer);
+    drawerBackdrop.addEventListener("click", closeDrawers);
+    drawerBagTab.addEventListener("click", () => {
+      openBagDrawer();
+    });
+    productClose.addEventListener("click", closeProductDetail);
+    productBackdrop.addEventListener("click", closeProductDetail);
+    detailAdd.addEventListener("click", () => {
+      if (!activeDetailWatch) {
+        return;
+      }
+
+      cart.push(activeDetailWatch);
+      renderCart();
+      closeProductDetail();
+      document.querySelector("#payment").scrollIntoView({ behavior: "smooth" });
+    });
+    detailWishlist.addEventListener("click", () => {
+      if (!activeDetailWatch) {
+        return;
+      }
+
+      const activeId = activeDetailWatch.id;
+      toggleWishlist(activeId);
+      activeDetailWatch = getWatchById(activeId);
+      renderDetailWishlistState();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && productModal.classList.contains("open")) {
+        closeProductDetail();
+      }
+    });
+
+    wishlistList.addEventListener("click", (event) => {
+      const removeButton = event.target.closest(".wishlist-remove");
+      const addButton = event.target.closest(".wishlist-add");
+
+      if (removeButton) {
+        toggleWishlist(removeButton.dataset.id);
+        return;
+      }
+
+      if (addButton) {
+        const watch = watches.find((item) => item.id === Number(addButton.dataset.id));
+        cart.push(watch);
+        renderCart();
+        closeWishlistDrawer();
+        document.querySelector("#payment").scrollIntoView({ behavior: "smooth" });
+      }
+    });
+
+    bagList.addEventListener("click", (event) => {
+      const removeButton = event.target.closest(".bag-remove");
+
+      if (!removeButton) {
+        return;
+      }
+
+      cart.splice(Number(removeButton.dataset.index), 1);
+      renderCart();
+    });
+
+    saveWishlist.addEventListener("click", () => {
+      showSiteNotification("Wishlist saved", "Your saved watches are stored on this browser.");
+    });
+
+    viewWishlist.addEventListener("click", () => {
+      closeWishlistDrawer();
+      document.querySelector("#shop").scrollIntoView({ behavior: "smooth" });
+    });
+
+    promoShop.addEventListener("click", () => {
+      setCategory(promoShop.dataset.category || "All Models");
+    });
+
+    confirmOrder.addEventListener("click", () => {
+      if (!cart.length) {
+        showSiteNotification("Your bag is empty", "Add a watch before confirming your order.", "error");
+        return;
+      }
+
+      showSiteNotification("Order confirmed", `Send payment to Bitcoin wallet: ${bitcoinWallet}`);
+    });
+
+    paymentProofForm.addEventListener("submit", (event) => {
+      const email = proofEmail.value.trim();
+      const hash = proofHash.value.trim();
+      const file = proofFile.files[0];
+      const fields = [proofEmail, proofHash, proofFile];
+      fields.forEach((field) => field.setAttribute("aria-invalid", "false"));
+
+      if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+        event.preventDefault();
+        proofEmail.setAttribute("aria-invalid", "true");
+        proofEmail.focus();
+        showSiteNotification("Email needed", "Enter a valid email for your payment proof.", "error");
+        return;
+      }
+
+      if (!file) {
+        event.preventDefault();
+        proofFile.setAttribute("aria-invalid", "true");
+        proofFile.focus();
+        showSiteNotification("Proof needed", "Upload a screenshot, receipt image, or PDF payment proof.", "error");
+        return;
+      }
+
+      if (hash.length < 24 || !/^[a-zA-Z0-9]+$/.test(hash)) {
+        event.preventDefault();
+        proofHash.setAttribute("aria-invalid", "true");
+        proofHash.focus();
+        showSiteNotification("Check transaction hash", "Paste the full Bitcoin transaction hash before submitting.", "error");
+        return;
+      }
+
+      localStorage.setItem("chrono24PaymentProof", JSON.stringify({
+        email,
+        hash,
+        fileName: file.name,
+        note: proofNote.value.trim(),
+        submittedAt: new Date().toISOString()
+      }));
+    });
+
+    renderPromoAd();
+    renderWishlistDrawer();
+    renderWatches();
+    renderCart();
+    const preloader = document.getElementById("preloader");
+    const discountBackdrop = document.getElementById("discount-backdrop");
+    const discountCta = document.getElementById("discount-cta");
+    const discountContinue = document.getElementById("discount-continue");
+    const discountEmail = document.getElementById("discount-email");
+    const discountDecline = document.getElementById("discount-decline");
+    const discountKey = "chrono24DiscountStateV2";
+    const preloaderMinimumMs = 450;
+
+    function isDiscountHidden() {
+      return localStorage.getItem(discountKey) === "dismissed" || localStorage.getItem(discountKey) === "subscribed";
+    }
+
+    function showDiscountPopup() {
+      if (isDiscountHidden()) return;
+      discountBackdrop.classList.add("open");
+      discountBackdrop.setAttribute("aria-hidden", "false");
+      discountCta.style.display = "none";
+      discountEmail && discountEmail.focus();
+    }
+
+    function hideDiscountPopup(dismiss = false) {
+      discountBackdrop.classList.remove("open");
+      discountBackdrop.setAttribute("aria-hidden", "true");
+      if (dismiss) localStorage.setItem(discountKey, "dismissed");
+      if (!isDiscountHidden()) {
+        discountCta.style.display = "inline-flex";
+      } else {
+        discountCta.style.display = "none";
+      }
+    }
+
+    function finishPreloader() {
+      if (isDiscountHidden()) {
+        discountCta.style.display = "none";
+        return;
+      }
+
+      showDiscountPopup();
+    }
+
+    function hidePreloader() {
+      if (!preloader) {
+        finishPreloader();
+        return;
+      }
+
+      preloader.classList.add("hidden");
+      preloader.setAttribute("aria-hidden", "true");
+      window.setTimeout(() => {
+        preloader.style.display = "none";
+        finishPreloader();
+      }, 220);
+    }
+
+    window.setTimeout(hidePreloader, preloaderMinimumMs);
+
+    discountCta.addEventListener("click", () => showDiscountPopup());
+
+    discountDecline.addEventListener("click", (e) => {
+      e.preventDefault();
+      hideDiscountPopup(true);
+    });
+
+    discountBackdrop.addEventListener("click", (e) => {
+      if (e.target === discountBackdrop) {
+        hideDiscountPopup(true);
+      }
+    });
+
+    discountContinue.addEventListener("click", () => {
+      const email = discountEmail.value && discountEmail.value.trim();
+      // basic email check
+      if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+        discountEmail.focus();
+        discountEmail.setAttribute("aria-invalid", "true");
+        showSiteNotification("Check your email", "Enter a valid email address to receive the code.", "error");
+        return;
+      }
+
+      discountEmail.setAttribute("aria-invalid", "false");
+      localStorage.setItem(discountKey, "subscribed");
+      hideDiscountPopup(false);
+      const code = "SALE20";
+      window.setTimeout(() => {
+        showSiteNotification("Discount code sent", `Use ${code} at checkout. We sent the details to ${email}.`);
+      }, 120);
+    });
+
+    document.querySelectorAll(".discount-cta .x").forEach((el) => {
+      el.addEventListener("click", (e) => {
+        e.stopPropagation();
+        localStorage.setItem(discountKey, "dismissed");
+        discountCta.style.display = "none";
+      });
+    });
+  </script>
+</body>
+</html>
